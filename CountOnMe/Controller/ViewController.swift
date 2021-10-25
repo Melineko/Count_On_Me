@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     @IBOutlet var numberButtons: [UIButton]!
     @IBOutlet weak var eraseButton: UIButton!
     
-    eraseButton.image = Image(systemName: "square.and.pencil")
+//    eraseButton.image = Image(systemName: "square.and.pencil")
     private let model = CountOnMeModel()
     
     var elements: [String] {
