@@ -26,8 +26,5 @@ final class CountOnMeModel {
         return elements.last != "+" && elements.last != "-"
     }
     
-    var expressionHaveResult: Bool {
-        return textView.text.firstIndex(of: "=") != nil
-    }
     
 }

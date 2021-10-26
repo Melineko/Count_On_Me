@@ -12,24 +12,42 @@ class ViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
     @IBOutlet var numberButtons: [UIButton]!
     @IBOutlet weak var eraseButton: UIButton!
+    @IBOutlet weak var ACButton: UIButton!
+    @IBOutlet var operatorButtons: [UIButton]!
+    @IBOutlet weak var pointDecimalButton: UIButton!
+    @IBOutlet weak var equalButton: UIButton!
     
 //    eraseButton.image = Image(systemName: "square.and.pencil")
     private let model = CountOnMeModel()
+    
+    var expressionHaveResult: Bool {
+        return textView.text.firstIndex(of: "=") != nil
+    }
     
     var elements: [String] {
         return textView.text.split(separator: " ").map { "\($0)" }
     }
     
-    
-    private func cornerRad(){
-        for button in numberButtons{
+    private func cornerRad(button: UIButton){
             button.layer.cornerRadius = 20
-        }}
+        }
+    private func buttonStyle(){
+        for button in numberButtons{
+        cornerRad(button: button)
+        }
+        for button in operatorButtons{
+        cornerRad(button: button)
+        }
+        cornerRad(button: eraseButton)
+        cornerRad(button: ACButton)
+        cornerRad(button: pointDecimalButton)
+        cornerRad(button: equalButton)
+    }
     
     // View Life cycles
     override func viewDidLoad() {
         super.viewDidLoad()
-        cornerRad()
+        buttonStyle()
         // Do any additional setup after loading the view.
     }
     
@@ -40,7 +58,7 @@ class ViewController: UIViewController {
             return
         }
         
-        if model.expressionHaveResult {
+        if expressionHaveResult {
             textView.text = ""
         }
         
@@ -51,9 +69,7 @@ class ViewController: UIViewController {
         if model.canAddOperator {
             textView.text.append(" + ")
         } else {
-            let alertVC = UIAlertController(title: "Zéro!", message: "Un operateur est déja mis !", preferredStyle: .alert)
-            alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            self.present(alertVC, animated: true, completion: nil)
+            alert()
         }
     }
     
@@ -61,9 +77,7 @@ class ViewController: UIViewController {
         if model.canAddOperator {
             textView.text.append(" - ")
         } else {
-            let alertVC = UIAlertController(title: "Zéro!", message: "Un operateur est déja mis !", preferredStyle: .alert)
-            alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            self.present(alertVC, animated: true, completion: nil)
+            alert()
         }
     }
     
@@ -71,9 +85,7 @@ class ViewController: UIViewController {
         if model.canAddOperator {
             textView.text.append(" x ")
         } else {
-            let alertVC = UIAlertController(title: "Zéro!", message: "Un operateur est déja mis !", preferredStyle: .alert)
-            alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            self.present(alertVC, animated: true, completion: nil)
+            alert()
         }
     }
     
@@ -81,9 +93,7 @@ class ViewController: UIViewController {
         if model.canAddOperator {
             textView.text.append(" / ")
         } else {
-            let alertVC = UIAlertController(title: "Zéro!", message: "Un operateur est déja mis !", preferredStyle: .alert)
-            alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            self.present(alertVC, animated: true, completion: nil)
+            alert()
         }
     }
     
@@ -99,7 +109,8 @@ class ViewController: UIViewController {
             let alertVC = UIAlertController(title: "Zéro!", message: "Démarrez un nouveau calcul !", preferredStyle: .alert)
             alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
             return self.present(alertVC, animated: true, completion: nil)
-        }
+            }
+        
         
         // Create local copy of operations
         var operationsToReduce = elements
@@ -124,6 +135,12 @@ class ViewController: UIViewController {
         }
         
         textView.text.append(" = \(operationsToReduce.first!)")
+    }
+    
+    func alert() {
+        let alertVC = UIAlertController(title: "Zéro!", message: "Un operateur est déja mis !", preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        self.present(alertVC, animated: true, completion: nil)
     }
 
 }
