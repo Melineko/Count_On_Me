@@ -15,7 +15,7 @@ final class CountOnMeModel {
 
     // Error check computed variables
     var expressionIsCorrect: Bool {
-        return elements.last != "+" && elements.last != "-"
+        return elements.last != "+" && elements.last != "-" && elements.last != "x" && elements.last != "÷"
     }
     
     var expressionHaveEnoughElement: Bool {

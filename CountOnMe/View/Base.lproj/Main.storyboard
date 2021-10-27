@@ -141,6 +141,7 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="tappedMulti:" destination="eqK-jh-KKu" eventType="touchUpInside" id="G1w-hM-BfZ"/>
+                                                    <action selector="tappedMultiplicationButton:" destination="eqK-jh-KKu" eventType="touchUpInside" id="TdS-xG-4Jj"/>
                                                 </connections>
                                             </button>
                                         </subviews>

@@ -9,6 +9,8 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    // MARK: - outlets
     @IBOutlet weak var textView: UITextView!
     @IBOutlet var numberButtons: [UIButton]!
     @IBOutlet weak var eraseButton: UIButton!
@@ -17,7 +19,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var pointDecimalButton: UIButton!
     @IBOutlet weak var equalButton: UIButton!
     
-//    eraseButton.image = Image(systemName: "square.and.pencil")
+    
+    
     private let model = CountOnMeModel()
     
     var expressionHaveResult: Bool {
@@ -31,6 +34,8 @@ class ViewController: UIViewController {
     private func cornerRad(button: UIButton){
             button.layer.cornerRadius = 20
         }
+    
+    // Round angle style of buttons
     private func buttonStyle(){
         for button in numberButtons{
         cornerRad(button: button)
@@ -44,7 +49,8 @@ class ViewController: UIViewController {
         cornerRad(button: equalButton)
     }
     
-    // View Life cycles
+    
+    // MARK: - viewLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         buttonStyle()
@@ -52,7 +58,7 @@ class ViewController: UIViewController {
     }
     
     
-    // View actions
+    // MARK: - actions
     @IBAction func tappedNumberButton(_ sender: UIButton) {
         guard let numberText = sender.title(for: .normal) else {
             return
