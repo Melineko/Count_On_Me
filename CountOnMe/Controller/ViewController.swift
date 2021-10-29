@@ -24,8 +24,11 @@ class ViewController: UIViewController {
     private let model = CountOnMeModel()
     
     var expressionHaveResult: Bool {
-        return textView.text.firstIndex(of: "=") != nil
-    }
+        //        if let textV = textView.text.firstIndex(of: "="){
+//            return true
+//        }
+          return textView.text.firstIndex(of: "=") != nil
+ }
     
     var elements: [String] {
         return textView.text.split(separator: " ").map { "\($0)" }
@@ -69,40 +72,44 @@ class ViewController: UIViewController {
         }
         
         textView.text.append(numberText)
+        model.addElement(element: numberText)
     }
     
-    @IBAction func tappedAdditionButton(_ sender: UIButton) {
-        if model.canAddOperator {
-            textView.text.append(" + ")
+    // Add operaor, decimal, clear
+    func tappedButton(_ sender: UIButton) {
+        let buttonTapped = sender.tag
+        if model.operatorChecking() {
+            switch buttonTapped {
+            case 1:
+                textView.text.append(" - ")
+                model.addOperator(element: "-")
+            case 2:
+                textView.text.append(" + ")
+                model.addOperator(element: "+")
+            case 3:
+                textView.text.append(" x ")
+                model.addOperator(element: "x")
+            case 4:
+                textView.text.append(" / ")
+                model.addOperator(element: "/")
+            case 5:
+                textView.text.append(".")
+                
+            case 6:
+                textView.text = ""
+                //model.
+            default:
+            alert(message: model.alertText)
+            }
+            
         } else {
-            alert()
+            alert(message: model.alertText)
         }
     }
     
-    @IBAction func tappedSubstractionButton(_ sender: UIButton) {
-        if model.canAddOperator {
-            textView.text.append(" - ")
-        } else {
-            alert()
-        }
+    @IBAction func erasedButton(_ sender: UIButton) {
+        model.elements.removeLast()
     }
-    
-    @IBAction func tappedMultiplicationButton(_ sender: UIButton) {
-        if model.canAddOperator {
-            textView.text.append(" x ")
-        } else {
-            alert()
-        }
-    }
-    
-    @IBAction func tappedDivisionButton(_ sender: UIButton) {
-        if model.canAddOperator {
-            textView.text.append(" / ")
-        } else {
-            alert()
-        }
-    }
-    
 
     @IBAction func tappedEqualButton(_ sender: UIButton) {
         guard model.expressionIsCorrect else {
@@ -143,8 +150,8 @@ class ViewController: UIViewController {
         textView.text.append(" = \(operationsToReduce.first!)")
     }
     
-    func alert() {
-        let alertVC = UIAlertController(title: "Zéro!", message: "Un operateur est déja mis !", preferredStyle: .alert)
+    func alert(message: String) {
+        let alertVC = UIAlertController(title: "Zéro!", message: message, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         self.present(alertVC, animated: true, completion: nil)
     }
