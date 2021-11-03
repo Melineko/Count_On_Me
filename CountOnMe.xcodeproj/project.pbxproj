@@ -15,6 +15,7 @@
 		1FA43BE8224E569A00F565CB /* CountOnMeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA43BE7224E569A00F565CB /* CountOnMeTests.swift */; };
 		1FA43BF3224E569A00F565CB /* CounOnMeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA43BF2224E569A00F565CB /* CounOnMeUITests.swift */; };
 		8E1368A2270F0E660049E05F /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = 8E1368A1270F0E660049E05F /* Algorithms */; };
+		8E4DFF052732C796004B2A95 /* AlertText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4DFF042732C796004B2A95 /* AlertText.swift */; };
 		8EA62DAC2722B893004A5BB2 /* CountOnMeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA62DAB2722B893004A5BB2 /* CountOnMeModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +50,7 @@
 		1FA43BEE224E569A00F565CB /* CountOnMeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CountOnMeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FA43BF2224E569A00F565CB /* CounOnMeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounOnMeUITests.swift; sourceTree = "<group>"; };
 		1FA43BF4224E569A00F565CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8E4DFF042732C796004B2A95 /* AlertText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertText.swift; sourceTree = "<group>"; };
 		8EA62DAB2722B893004A5BB2 /* CountOnMeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountOnMeModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,8 +106,9 @@
 				8EA62DA82722B7E5004A5BB2 /* Model */,
 				8EA62DAA2722B7FD004A5BB2 /* Controller */,
 				8EA62DA92722B7F6004A5BB2 /* View */,
-				1FA43BD2224E569900F565CB /* AppDelegate.swift */,
+				8E4DFF032732C759004B2A95 /* Supporting files */,
 				1FA43BD9224E569A00F565CB /* Assets.xcassets */,
+				1FA43BD2224E569900F565CB /* AppDelegate.swift */,
 				1FA43BDB224E569A00F565CB /* LaunchScreen.storyboard */,
 				1FA43BDE224E569A00F565CB /* Info.plist */,
 			);
@@ -128,6 +131,14 @@
 				1FA43BF4224E569A00F565CB /* Info.plist */,
 			);
 			path = CountOnMeUITests;
+			sourceTree = "<group>";
+		};
+		8E4DFF032732C759004B2A95 /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				8E4DFF042732C796004B2A95 /* AlertText.swift */,
+			);
+			path = "Supporting files";
 			sourceTree = "<group>";
 		};
 		8EA62DA82722B7E5004A5BB2 /* Model */ = {
@@ -294,6 +305,7 @@
 				8EA62DAC2722B893004A5BB2 /* CountOnMeModel.swift in Sources */,
 				1FA43BD5224E569900F565CB /* ViewController.swift in Sources */,
 				1FA43BD3224E569900F565CB /* AppDelegate.swift in Sources */,
+				8E4DFF052732C796004B2A95 /* AlertText.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

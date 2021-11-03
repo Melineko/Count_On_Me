@@ -15,15 +15,10 @@ final class CountOnMeModel {
     var alertText = ""
     let operators = ["+","-","x","/","="]
     
-    enum alertCases: String{
-        case notCorrectExpression = "Entrez une expression correcte !"
-        case notEnoughtElements = "Démarrez un nouveau calcul !"
-        case haveAlreadyOperator = "Un operateur est déjà mis !"
-        case divisionForZero = "Erreur"
-    }
 
-    // Error check computed variables
+    //MARK: Error check computed variables
     var expressionIsCorrect: Bool {
+        print(elements.last as Any)
         return elements.last != "+" && elements.last != "-" && elements.last != "x" && elements.last != "÷"
     }
     
@@ -37,9 +32,7 @@ final class CountOnMeModel {
     
     // Add numbers to array
     func addElement(element: String){
-        if elements.isEmpty{
             elements.append(element)
-        }
     }
     
     // Add operators to array
@@ -47,10 +40,10 @@ final class CountOnMeModel {
             elements.append(element)
         
     }
-    // is there already an operator
+    // Is there already an operator
     func operatorChecking() -> Bool {
         if !canAddOperator {
-            alertText = alertCases.haveAlreadyOperator.rawValue
+            alertText = AlertText.alertCases.haveAlreadyOperator.rawValue
             return false
         }
         return true
@@ -65,6 +58,29 @@ final class CountOnMeModel {
         elements.removeAll()
     }
     
-    // MAKE TE CALCUL
-    
+    // MAKE THE CALCUL
+    func makeCalcul() -> String? {
+        // Create local copy of operations
+        var operationsToReduce = elements
+        
+        // Iterate over operations while an operand still here
+        while operationsToReduce.count > 1 {
+            let left = Double(operationsToReduce[0])!
+            let operand = operationsToReduce[1]
+            let right = Double(operationsToReduce[2])!
+            
+            let result: Double
+            switch operand {
+            case "+": result = left + right
+            case "-": result = left - right
+            case "x": result = left * right
+            case "/": result = left / right
+            default: fatalError("Operateur inconnu !")
+            }
+            
+            operationsToReduce = Array(operationsToReduce.dropFirst(3))
+            operationsToReduce.insert("\(result)", at: 0)
+        }
+        return operationsToReduce.first
+    }
 }
