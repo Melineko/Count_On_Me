@@ -44,6 +44,7 @@ final class CountOnMeModel {
             elements.append(element)
         
     }
+    
     // Is there already an operator
     func operatorChecking() -> Bool {
         if !canAddOperator {
@@ -67,6 +68,8 @@ final class CountOnMeModel {
         return true
     }
     
+    
+    // Clear elements
     func clearAllElements() {
         elements.removeAll()
     }
@@ -75,22 +78,26 @@ final class CountOnMeModel {
     func makeCalcul() -> String? {
         // Create local copy of operations
         var operationsToReduce = elements
+        let left = Double(operationsToReduce[0])
+        let operand = operationsToReduce[1]
+        var result: Double = 0
+        let right = Double(operationsToReduce[2])
         
         // Iterate over operations while an operand still here
         while operationsToReduce.count > 1 {
-            if let left = Double(operationsToReduce[0]), let operand = operationsToReduce[1], let result: Double, let right = Double(operationsToReduce[2]){
+           
             
             switch operand {
-            case "+": result = left + right
-            case "-": result = left - right
-            case "x": result = left * right
-            case "/": result = left / right
+            case "+": result = left! + right!
+            case "-": result = left! - right!
+            case "x": result = left! * right!
+            case "/": result = left! / right!
             default: fatalError("Operateur inconnu !")
             }
                 operationsToReduce = Array(operationsToReduce.dropFirst(3))
                 operationsToReduce.insert("\(result)", at: 0)
             
-        }
+        
             
         }
         return operationsToReduce.first
