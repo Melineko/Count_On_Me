@@ -11,15 +11,19 @@ import Foundation
 final class CountOnMeModel {
     
     var elements: [String] = []
+    let result: Double = 0
     var displayResult = ""
     var alertText = ""
-    let operators = ["+","-","x","/","="]
+    var left = ""
+    var right = ""
+    
+    
     
 
     //MARK: Error check computed variables
     var expressionIsCorrect: Bool {
         print(elements.last as Any)
-        return elements.last != "+" && elements.last != "-" && elements.last != "x" && elements.last != "÷"
+        return elements.last != "+" && elements.last != "-" && elements.last != "x" && elements.last != "/"
     }
     
     var expressionHaveEnoughElement: Bool {
@@ -27,7 +31,7 @@ final class CountOnMeModel {
     }
     
     var canAddOperator: Bool {
-        return elements.last != "+" && elements.last != "-"  && elements.last != "x" && elements.last != "÷"
+        return elements.last != "+" && elements.last != "-"  && elements.last != "x" && elements.last != "/"
     }
     
     // Add numbers to array
@@ -50,8 +54,17 @@ final class CountOnMeModel {
     }
     
     // Add decimal
-    func addDecimal(){
-        
+    func addDecimal(element: String){
+        if isAutorizingDecimal(){
+            elements.append(element)
+        }
+    }
+    
+    func isAutorizingDecimal()-> Bool{
+        if elements.last == "."{
+            return false
+        }
+        return true
     }
     
     func clearAllElements() {
@@ -65,11 +78,8 @@ final class CountOnMeModel {
         
         // Iterate over operations while an operand still here
         while operationsToReduce.count > 1 {
-            let left = Double(operationsToReduce[0])!
-            let operand = operationsToReduce[1]
-            let right = Double(operationsToReduce[2])!
+            if let left = Double(operationsToReduce[0]), let operand = operationsToReduce[1], let result: Double, let right = Double(operationsToReduce[2]){
             
-            let result: Double
             switch operand {
             case "+": result = left + right
             case "-": result = left - right
@@ -77,9 +87,11 @@ final class CountOnMeModel {
             case "/": result = left / right
             default: fatalError("Operateur inconnu !")
             }
+                operationsToReduce = Array(operationsToReduce.dropFirst(3))
+                operationsToReduce.insert("\(result)", at: 0)
             
-            operationsToReduce = Array(operationsToReduce.dropFirst(3))
-            operationsToReduce.insert("\(result)", at: 0)
+        }
+            
         }
         return operationsToReduce.first
     }

@@ -67,9 +67,10 @@ class ViewController: UIViewController {
         if expressionHaveResult {
             textView.text = ""
         }
-        
-        model.addElement(element: numberText)
         textView.text.append(numberText)
+        let numberComplete = textView.text!
+        model.addElement(element: numberComplete)
+        
     }
     
     // Add operaor, decimal, clear
@@ -78,20 +79,21 @@ class ViewController: UIViewController {
         if model.operatorChecking() {
             switch buttonTapped {
             case 1:
-                textView.text.append(" - ")
                 model.addOperator(element: "-")
+                textView.text.append(" - ")
             case 2:
-                textView.text.append(" + ")
                 model.addOperator(element: "+")
+                textView.text.append(" + ")
             case 3:
-                textView.text.append(" x ")
                 model.addOperator(element: "x")
+                textView.text.append(" x ")
             case 4:
-                textView.text.append(" / ")
                 model.addOperator(element: "/")
+                textView.text.append(" / ")
             case 5:
+                model.addDecimal()
                 textView.text.append(".")
-                
+
             case 6:
                 textView.text = ""
                 model.clearAllElements()
@@ -110,6 +112,8 @@ class ViewController: UIViewController {
         let newEntrie = String(textView.text.dropLast(1))
         print ("\(newEntrie)")
         textView.text = ("\(newEntrie)")
+        } else {
+            return
         }
         
     }
