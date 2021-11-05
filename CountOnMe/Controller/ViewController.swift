@@ -76,7 +76,7 @@ class ViewController: UIViewController {
     // Add operaor, decimal, clear
     @IBAction func tappedButton(_ sender: UIButton) {
         let buttonTapped = sender.tag
-        if model.operatorChecking() {
+        if model.canAddOperator {
             switch buttonTapped {
             case 1:
                 model.addOperator(element: "-")
@@ -91,7 +91,7 @@ class ViewController: UIViewController {
                 model.addOperator(element: "/")
                 textView.text.append(" / ")
             case 5:
-                model.addDecimal()
+                model.addDecimal(element: ".")
                 textView.text.append(".")
 
             case 6:
@@ -110,7 +110,7 @@ class ViewController: UIViewController {
         if !expressionHaveResult {
         model.elements.removeLast(1)
         let newEntrie = String(textView.text.dropLast(1))
-        print ("\(newEntrie)")
+        print ("\(newEntrie)")// to check in console
         textView.text = ("\(newEntrie)")
         } else {
             return
@@ -126,27 +126,17 @@ class ViewController: UIViewController {
     
 
     @IBAction func tappedEqualButton(_ sender: UIButton) {
-        guard model.expressionIsCorrect else {
-            let alertVC = UIAlertController(title: "Zéro!", message: "Entrez une expression correcte !", preferredStyle: .alert)
-            alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            return self.present(alertVC, animated: true, completion: nil)
-        }
         
-        guard model.expressionHaveEnoughElement else {
-            let alertVC = UIAlertController(title: "Zéro!", message: "Démarrez un nouveau calcul !", preferredStyle: .alert)
-            alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            return self.present(alertVC, animated: true, completion: nil)
-            }
-        
-        if expressionHaveResult{
+        if expressionHaveResult {
+            model.alertText = AlertText.alertCases.haveEnoughtElements.rawValue
             alert(message: model.alertText)
-        }else{
-    model.displayResult = (" = \(String(describing: model.makeCalcul()))")
+        } else if model.expressionIsCorrect && model.expressionHaveEnoughElement {
+     model.displayResult = (" = \(String(describing: model.makeCalcul()))")
      if let resultPrint = model.makeCalcul() {
          textView.text.append(" = \(resultPrint)")
-        }
-        }
-    }
+         }
+       }
+     }
     
     func alert(message: String) {
         let alertVC = UIAlertController(title: "Zéro!", message: message, preferredStyle: .alert)
