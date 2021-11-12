@@ -31,6 +31,7 @@ class ViewController: UIViewController {
         return textView.text.split(separator: " ").map { "\($0)" }
     }
     
+    
     private func cornerRad(button: UIButton){
             button.layer.cornerRadius = 20
         }
@@ -54,12 +55,16 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         buttonStyle()
+        //model.calculText = textView.text
         // Do any additional setup after loading the view.
     }
     
     
     // MARK: - actions
+    
+    // Add numbers
     @IBAction func tappedNumberButton(_ sender: UIButton) {
+        model.calculText = textView.text
         guard let numberText = sender.title(for: .normal) else {
             return
         }
@@ -68,27 +73,22 @@ class ViewController: UIViewController {
             textView.text = ""
         }
         textView.text.append(numberText)
-        let numberComplete = textView.text!
-        model.addElement(element: numberComplete)
         
     }
     
     // Add operaor, decimal, clear
     @IBAction func tappedButton(_ sender: UIButton) {
         let buttonTapped = sender.tag
+        model.calculText = textView.text
         if model.canAddOperator {
             switch buttonTapped {
             case 1:
-                model.addOperator(element: "-")
                 textView.text.append(" - ")
             case 2:
-                model.addOperator(element: "+")
                 textView.text.append(" + ")
             case 3:
-                model.addOperator(element: "x")
                 textView.text.append(" x ")
             case 4:
-                model.addOperator(element: "/")
                 textView.text.append(" / ")
             case 5:
                 model.addDecimal(element: ".")
@@ -96,7 +96,6 @@ class ViewController: UIViewController {
 
             case 6:
                 textView.text = ""
-                model.clearAllElements()
             default:
             alert(message: model.alertText)
             }
@@ -107,11 +106,11 @@ class ViewController: UIViewController {
     }
     
     @IBAction func erasedButton(_ sender: UIButton) {
+        model.calculText = textView.text
         if !expressionHaveResult {
-        model.elements.removeLast(1)
-        let newEntrie = String(textView.text.dropLast(1))
-        print ("\(newEntrie)")// to check in console
+        let newEntrie = String(textView.text.dropLast())
         textView.text = ("\(newEntrie)")
+            print ("\(newEntrie)")// to check in console
         } else {
             return
         }
@@ -120,26 +119,26 @@ class ViewController: UIViewController {
     
     
     @IBAction func allClear(_ sender: UIButton) {
-        model.clearAllElements()
         textView.text = ""
     }
     
 
     @IBAction func tappedEqualButton(_ sender: UIButton) {
+        model.calculText = textView.text
         
         if expressionHaveResult {
-            model.alertText = AlertText.alertCases.haveEnoughtElements.rawValue
+            model.alertText = AlertText.AlertCases.haveEnoughtElements.rawValue
             alert(message: model.alertText)
         } else if model.expressionIsCorrect && model.expressionHaveEnoughElement {
-     model.displayResult = (" = \(String(describing: model.makeCalcul()))")
-     if let resultPrint = model.makeCalcul() {
-         textView.text.append(" = \(resultPrint)")
-         }
-       }
-     }
+            //model.displayResult = (" = \(String(describing: model.makeCalcul()))")
+            if let resultPrint = model.makeCalcul() {
+                textView.text.append(" = \(resultPrint)")
+            }
+        }
+    }
     
     func alert(message: String) {
-        let alertVC = UIAlertController(title: "Zéro!", message: message, preferredStyle: .alert)
+        let alertVC = UIAlertController(title: "Erreur!", message: message, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         self.present(alertVC, animated: true, completion: nil)
     }
