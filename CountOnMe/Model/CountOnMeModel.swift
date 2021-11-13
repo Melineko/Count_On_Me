@@ -87,25 +87,23 @@ final class CountOnMeModel {
     
     // MAKE THE CALCUL
     func makeCalcul() -> String? {
-        
-        
+ 
         // Create local copy of operations
         var operationsToReduce = elements
-        var index = 0
-        guard let left = Double(operationsToReduce[index]), let right = Double(operationsToReduce[index+2]) else { return "ERREUR" }
-        let operand = operationsToReduce[index+1]
         var result: Double = 0
         
-    
         // Iterate over operations while an operand still here
         while operationsToReduce.count > 1 {
+            var index = 0
             
-            if isPriorityCalcul(subCalcul : operationsToReduce){
-                            if operand != "/" && operand != "*"{
-                                index += 2
-                                continue
-                            }
-                        }
+            for indice in 0..<operationsToReduce.count {
+                if operationsToReduce[indice].contains("*") || operationsToReduce[indice].contains("/") {
+                    index = indice - 1
+                }
+            }
+            
+            guard let left = Double(operationsToReduce[index]), let right = Double(operationsToReduce[index+2]) else { return "ERREUR" }
+            let operand = operationsToReduce[index+1]
             
             switch operand {
             case "+":
@@ -118,7 +116,12 @@ final class CountOnMeModel {
                 result = left / right
             default: fatalError("Operateur inconnu !")
             }
-            operationsToReduce = Array(operationsToReduce.dropFirst(3))
+    
+            // Supprimer les 3 premier elements à partir de l'index / indice
+            for _ in 1...3{
+                operationsToReduce.remove(at: index)
+            }
+            
             operationsToReduce.insert("\(result)", at: index)
                                                 
             index = 0
@@ -127,10 +130,14 @@ final class CountOnMeModel {
         return operationsToReduce.first
     }
     
-    // Check if there is prioritory operator
-    func isPriorityCalcul(subCalcul : [String]) -> Bool{
-                return subCalcul.contains("/") || subCalcul.contains("*")
-            }
+ 
+    
+    // ["12", "+", "4", "/", "2"]
+    
+    // Replace the first index with result
+    func startingWithResult(){
+        
+    }
 
 
 }

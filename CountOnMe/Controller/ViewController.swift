@@ -112,6 +112,8 @@ class ViewController: UIViewController {
         textView.text = ("\(newEntrie)")
             print ("\(newEntrie)")// to check in console
         } else {
+            model.alertText = AlertText.AlertCases.haveEnoughtElements.rawValue
+            alert(message: model.alertText)
             return
         }
         
