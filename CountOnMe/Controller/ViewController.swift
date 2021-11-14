@@ -106,11 +106,14 @@ class ViewController: UIViewController {
     }
     
     @IBAction func erasedButton(_ sender: UIButton) {
-        model.calculText = textView.text
         if !expressionHaveResult {
+            if textView.text.last == " "{
+                textView.text.removeLast()
+            }
         let newEntrie = String(textView.text.dropLast())
         textView.text = ("\(newEntrie)")
             print ("\(newEntrie)")// to check in console
+            print ("\(model.calculText)")
         } else {
             model.alertText = AlertText.AlertCases.haveEnoughtElements.rawValue
             alert(message: model.alertText)
@@ -118,6 +121,7 @@ class ViewController: UIViewController {
         }
         
     }
+    
     
     
     @IBAction func allClear(_ sender: UIButton) {

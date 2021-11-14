@@ -99,6 +99,7 @@ final class CountOnMeModel {
             for indice in 0..<operationsToReduce.count {
                 if operationsToReduce[indice].contains("x") || operationsToReduce[indice].contains("/") {
                     index = indice - 1
+                    break
                 }
             }
             guard let left = Double(operationsToReduce[index]), let right = Double(operationsToReduce[index+2]) else { return "ERREUR" }
