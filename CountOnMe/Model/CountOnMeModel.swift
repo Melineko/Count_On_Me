@@ -91,19 +91,19 @@ final class CountOnMeModel {
         // Create local copy of operations
         var operationsToReduce = elements
         var result: Double = 0
+        var index = 0
         
         // Iterate over operations while an operand still here
         while operationsToReduce.count > 1 {
-            var index = 0
             
             for indice in 0..<operationsToReduce.count {
-                if operationsToReduce[indice].contains("*") || operationsToReduce[indice].contains("/") {
+                if operationsToReduce[indice].contains("x") || operationsToReduce[indice].contains("/") {
                     index = indice - 1
                 }
             }
-            
             guard let left = Double(operationsToReduce[index]), let right = Double(operationsToReduce[index+2]) else { return "ERREUR" }
             let operand = operationsToReduce[index+1]
+            
             
             switch operand {
             case "+":
