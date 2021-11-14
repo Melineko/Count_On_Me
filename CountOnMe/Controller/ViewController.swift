@@ -91,8 +91,9 @@ class ViewController: UIViewController {
             case 4:
                 textView.text.append(" / ")
             case 5:
-                model.addDecimal(element: ".")
-                textView.text.append(".")
+                if model.expressionIsCorrect{
+                textView.text.append(" . ")
+                }
 
             case 6:
                 textView.text = ""

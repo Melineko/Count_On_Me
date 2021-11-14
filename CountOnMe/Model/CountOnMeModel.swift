@@ -11,7 +11,6 @@ import Foundation
 final class CountOnMeModel {
     
     let result: Double = 0
-    var displayResult = ""
     var alertText = "Y'a quoi"
     var left = ""
     var right = ""
@@ -31,7 +30,7 @@ final class CountOnMeModel {
     //MARK: Error check computed variables
     var expressionIsCorrect: Bool {
         print(elements.last as Any)
-        if elements.last != "+" && elements.last != "-" && elements.last != "x" && elements.last != "/"{
+        if elements.last != "+" && elements.last != "-" && elements.last != "x" && elements.last != "/" && elements.last != "."{
             return true
         }else{
             alertText = AlertText.AlertCases.notCorrectExpression.rawValue
@@ -50,7 +49,7 @@ final class CountOnMeModel {
     }
     
     var canAddOperator: Bool {
-        if elements.last != "+" && elements.last != "-"  && elements.last != "x" && elements.last != "/"{
+        if elements.last != "+" && elements.last != "-"  && elements.last != "x" && elements.last != "/" {
             return true
         }else if expressionHaveResult{
             return true
@@ -61,23 +60,12 @@ final class CountOnMeModel {
     }
     
 
-    // Add decimal
-    func addDecimal(element: String) {
-        if isAutorizingDecimal() {
-//            elements.append(element)
-        }
-    }
     
     var isDecimal: Bool{
         return calculText.contains(".")
     }
     
-    func isAutorizingDecimal()-> Bool {
-        if elements.last == "." {
-            return false
-        }
-        return true
-    }
+   
     
     
     // Clear elements
