@@ -91,8 +91,10 @@ class ViewController: UIViewController {
             case 4:
                 textView.text.append(" / ")
             case 5:
-                if model.expressionIsCorrect{
-                textView.text.append(" . ")
+                if model.expressionIsCorrect {
+                textView.text.append(".")
+                }else{
+                    alert(message: model.alertText)
                 }
 
             case 6:
@@ -136,11 +138,13 @@ class ViewController: UIViewController {
         if expressionHaveResult {
             model.alertText = AlertText.AlertCases.haveEnoughtElements.rawValue
             alert(message: model.alertText)
-        } else if model.expressionIsCorrect && model.expressionHaveEnoughElement {
+        } else if model.expressionIsCorrect && model.expressionHaveEnoughElement{
             //model.displayResult = (" = \(String(describing: model.makeCalcul()))")
             if let resultPrint = model.makeCalcul() {
                 textView.text.append(" = \(resultPrint)")
             }
+        } else {
+            alert(message:model.alertText)
         }
     }
     

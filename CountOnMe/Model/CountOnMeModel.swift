@@ -11,7 +11,7 @@ import Foundation
 final class CountOnMeModel {
     
     let result: Double = 0
-    var alertText = "Y'a quoi"
+    var alertText = "Non valide"
     var left = ""
     var right = ""
     var calculText: String = ""
@@ -60,12 +60,17 @@ final class CountOnMeModel {
     }
     
 
-    
     var isDecimal: Bool{
         return calculText.contains(".")
     }
     
-   
+    func isJustOneDecimalNumber()-> Bool{
+        if elements.count == 3 && isDecimal{
+            alertText = AlertText.AlertCases.notCorrectExpression.rawValue
+            return true
+        }
+        return false
+    }
     
     
     // Clear elements
@@ -103,6 +108,13 @@ final class CountOnMeModel {
                 result = left * right
             case "/":
                 result = left / right
+            /*case ".":
+                let unionDecimale: String = "\(left)"+"\(operand)"+"\(right)"
+                if let doubleValue = Double(unionDecimale) {
+                    result = doubleValue
+                    print("la décimale utilisée = \(doubleValue)")
+                }*/
+                
             default: fatalError("Operateur inconnu !")
             }
     
