@@ -31,6 +31,10 @@ class ViewController: UIViewController {
         return textView.text.split(separator: " ").map { "\($0)" }
     }
     
+    var isDecimale: Bool {
+        return textView.text.firstIndex(of: ".") != nil
+}
+    
     
     private func cornerRad(button: UIButton){
             button.layer.cornerRadius = 20
@@ -80,26 +84,27 @@ class ViewController: UIViewController {
     @IBAction func tappedButton(_ sender: UIButton) {
         let buttonTapped = sender.tag
         model.calculText = textView.text
-        var isDecimale = false
         
         if model.canAddOperator {
+            if model.expressionHaveResult{
+            if let resultPrint = model.makeCalcul() {
+                textView.text = ""
+                //model.clearAllElements()
+                textView.text.append(" = \(resultPrint)")
+            }
+            }
             switch buttonTapped {
             case 1:
                 textView.text.append(" - ")
-                isDecimale = false
             case 2:
                 textView.text.append(" + ")
-                isDecimale = false
             case 3:
                 textView.text.append(" x ")
-                isDecimale = false
             case 4:
                 textView.text.append(" / ")
-                isDecimale = false
             case 5:
-                if model.expressionIsCorrect && isDecimale == false{
+                if model.expressionIsCorrect && !isDecimale{
                 textView.text.append(".")
-                isDecimale = true
                 }else{
                     alert(message: model.alertText)
                 }
@@ -148,7 +153,8 @@ class ViewController: UIViewController {
         } else if model.expressionIsCorrect && model.expressionHaveEnoughElement{
             //model.displayResult = (" = \(String(describing: model.makeCalcul()))")
             if let resultPrint = model.makeCalcul() {
-                textView.text.append(" = \(resultPrint)")
+                let doubleToIntString = resultPrint.replacingOccurrences(of: ".0", with: "")
+                textView.text.append(" = \(doubleToIntString)")
             }
         } else {
             alert(message:model.alertText)

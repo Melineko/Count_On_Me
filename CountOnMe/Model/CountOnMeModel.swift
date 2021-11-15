@@ -11,6 +11,7 @@ import Foundation
 final class CountOnMeModel {
     
     let result: Double = 0
+    var displayResult = ""
     var alertText = "Non valide"
     var left = ""
     var right = ""
@@ -59,10 +60,6 @@ final class CountOnMeModel {
         return false
     }
     
-
-    var isDecimal: Bool{
-        return calculText.contains(".")
-    }
     
     // Clear elements
     func clearAllElements() {
@@ -99,21 +96,13 @@ final class CountOnMeModel {
                 result = left * right
             case "/":
                 result = left / right
-            /*case ".":
-                let unionDecimale: String = "\(left)"+"\(operand)"+"\(right)"
-                if let doubleValue = Double(unionDecimale) {
-                    result = doubleValue
-                    print("la décimale utilisée = \(doubleValue)")
-                }*/
                 
             default: fatalError("Operateur inconnu !")
             }
     
-            // Supprimer les 3 premier elements à partir de l'index / indice
             for _ in 1...3{
                 operationsToReduce.remove(at: index)
             }
-            
             operationsToReduce.insert("\(result)", at: index)
                                                 
             index = 0
@@ -122,15 +111,12 @@ final class CountOnMeModel {
         return operationsToReduce.first
     }
     
- 
-    
-    // ["12", "+", "4", "/", "2"]
     
     // Replace the first index with result
     func startingWithResult(){
         
     }
-
+    
 
 }
 
