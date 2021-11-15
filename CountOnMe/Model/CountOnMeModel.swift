@@ -64,15 +64,6 @@ final class CountOnMeModel {
         return calculText.contains(".")
     }
     
-    func isJustOneDecimalNumber()-> Bool{
-        if elements.count == 3 && isDecimal{
-            alertText = AlertText.AlertCases.notCorrectExpression.rawValue
-            return true
-        }
-        return false
-    }
-    
-    
     // Clear elements
     func clearAllElements() {
      calculText = ""

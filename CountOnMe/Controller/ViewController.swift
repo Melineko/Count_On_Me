@@ -80,19 +80,26 @@ class ViewController: UIViewController {
     @IBAction func tappedButton(_ sender: UIButton) {
         let buttonTapped = sender.tag
         model.calculText = textView.text
+        var isDecimale = false
+        
         if model.canAddOperator {
             switch buttonTapped {
             case 1:
                 textView.text.append(" - ")
+                isDecimale = false
             case 2:
                 textView.text.append(" + ")
+                isDecimale = false
             case 3:
                 textView.text.append(" x ")
+                isDecimale = false
             case 4:
                 textView.text.append(" / ")
+                isDecimale = false
             case 5:
-                if model.expressionIsCorrect {
+                if model.expressionIsCorrect && isDecimale == false{
                 textView.text.append(".")
+                isDecimale = true
                 }else{
                     alert(message: model.alertText)
                 }
