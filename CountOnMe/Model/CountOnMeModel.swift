@@ -27,9 +27,13 @@ final class CountOnMeModel {
           return calculText.firstIndex(of: "=") != nil
  }
     var isDecimal: Bool {
-        let lastElement: String = "\(String(describing: elements.last))"
-        if lastElement.suffix(1) != "." {
+        if let lastElement = elements.last {
+            if lastElement.suffix(1) != "." || lastElement.contains = "."{
+            print("\(lastElement)")
+            print("isDecimal : false")// check in console
             return false
+        }
+        print("isDecimal : true")// check in console
         }
         return true
     }
@@ -38,9 +42,11 @@ final class CountOnMeModel {
     var expressionIsCorrect: Bool {
         print(elements.last as Any)
         if elements.last != "+" && elements.last != "-" && elements.last != "x" && elements.last != "/" && !isDecimal{
+            print("expressionIsCorrect : true")// check in console
             return true
         }else{
             alertText = AlertText.AlertCases.notCorrectExpression.rawValue
+            print("expressionIsCorrect : false")// check in console
             return false
         }
         
@@ -57,10 +63,13 @@ final class CountOnMeModel {
     
     var canAddOperator: Bool {
         if elements.last != "+" && elements.last != "-"  && elements.last != "x" && elements.last != "/" {
+            print("canAddOperator : true")// check in console
             return true
         }else if expressionHaveResult{
+            print("canAddOperator : true car il ya un resultat")// check in console
             return true
         }else{
+            print("canAddOperator : false")// check in console
             alertText = AlertText.AlertCases.haveAlreadyOperator.rawValue
         }
         return false
@@ -80,6 +89,8 @@ final class CountOnMeModel {
         var result: Double = 0
         var index = 0
         
+        checkArrayInconsole(in: operationsToReduce)// check in console
+        
         // Iterate over operations while an operand still here
         while operationsToReduce.count > 1 {
             
@@ -92,6 +103,8 @@ final class CountOnMeModel {
             guard let left = Double(operationsToReduce[index]), let right = Double(operationsToReduce[index+2]) else { return "ERREUR" }
             let operand = operationsToReduce[index+1]
             
+            print("Elements après attribution des indexes :")// check in console
+            checkArrayInconsole(in: operationsToReduce)// check in console
             
             switch operand {
             case "+":
@@ -112,8 +125,13 @@ final class CountOnMeModel {
             operationsToReduce.insert("\(result)", at: index)
                                                 
             index = 0
+            print("Elements après sous-total :")// check in console
+            checkArrayInconsole(in: operationsToReduce)// check in console
             
         }//end of while
+        print("Elements Total :")// check in console
+        checkArrayInconsole(in: operationsToReduce)// check in console
+        
         return operationsToReduce.first
     }
     
@@ -123,6 +141,12 @@ final class CountOnMeModel {
         
     }
     
+    func checkArrayInconsole(in array: [String]){
+        for eachElement in array {
+            print("operationToReduce contient :")
+            print("\(eachElement)")
+        }
+    }
 
 }
 
