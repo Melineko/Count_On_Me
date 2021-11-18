@@ -26,12 +26,18 @@ final class CountOnMeModel {
     var expressionHaveResult: Bool {
           return calculText.firstIndex(of: "=") != nil
  }
-    
+    var isDecimal: Bool {
+        let lastElement: String = "\(String(describing: elements.last))"
+        if lastElement.suffix(1) != "." {
+            return false
+        }
+        return true
+    }
 
     //MARK: Error check computed variables
     var expressionIsCorrect: Bool {
         print(elements.last as Any)
-        if elements.last != "+" && elements.last != "-" && elements.last != "x" && elements.last != "/" && elements.last != "."{
+        if elements.last != "+" && elements.last != "-" && elements.last != "x" && elements.last != "/" && !isDecimal{
             return true
         }else{
             alertText = AlertText.AlertCases.notCorrectExpression.rawValue

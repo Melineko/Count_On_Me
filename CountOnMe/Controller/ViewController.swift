@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     @IBOutlet var operatorButtons: [UIButton]!
     @IBOutlet weak var pointDecimalButton: UIButton!
     @IBOutlet weak var equalButton: UIButton!
-    
+
     
     
     private let model = CountOnMeModel()
@@ -30,10 +30,6 @@ class ViewController: UIViewController {
     var elements: [String] {
         return textView.text.split(separator: " ").map { "\($0)" }
     }
-    
-    var isDecimale: Bool {
-        return textView.text.firstIndex(of: ".") != nil
-}
     
     
     private func cornerRad(button: UIButton){
@@ -85,14 +81,14 @@ class ViewController: UIViewController {
         let buttonTapped = sender.tag
         model.calculText = textView.text
         
-        if model.canAddOperator {
-            if model.expressionHaveResult{
+        if model.canAddOperator && model.expressionIsCorrect{
+           /* if model.expressionHaveResult{
             if let resultPrint = model.makeCalcul() {
                 textView.text = ""
-                //model.clearAllElements()
+                model.clearAllElements()
                 textView.text.append(" = \(resultPrint)")
             }
-            }
+            }*/
             switch buttonTapped {
             case 1:
                 textView.text.append(" - ")
@@ -103,11 +99,11 @@ class ViewController: UIViewController {
             case 4:
                 textView.text.append(" / ")
             case 5:
-                if model.expressionIsCorrect && !isDecimale{
+                /*if model.expressionIsCorrect{*/
                 textView.text.append(".")
-                }else{
-                    alert(message: model.alertText)
-                }
+//                }else{
+//                    alert(message: model.alertText)
+//                }
 
             case 6:
                 textView.text = ""
