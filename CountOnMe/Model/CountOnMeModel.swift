@@ -65,10 +65,10 @@ final class CountOnMeModel {
         if elements.last != "+" && elements.last != "-"  && elements.last != "x" && elements.last != "/" {
             print("canAddOperator : true")// check in console
             return true
-        }else if expressionHaveResult{
+        }/*else if expressionHaveResult{
             print("canAddOperator : true car il ya un resultat")// check in console
             return true
-        }else{
+        }*/else{
             print("canAddOperator : false")// check in console
             alertText = AlertText.AlertCases.haveAlreadyOperator.rawValue
         }
@@ -142,8 +142,8 @@ final class CountOnMeModel {
     }
     
     func checkArrayInconsole(in array: [String]){
+        print("operationToReduce contient :")
         for eachElement in array {
-            print("operationToReduce contient :")
             print("\(eachElement)")
         }
     }
