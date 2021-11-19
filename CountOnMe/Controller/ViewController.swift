@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var equalButton: UIButton!
 
     
-    
+    // Import the model
     private let model = CountOnMeModel()
     
     var expressionHaveResult: Bool {
@@ -32,6 +32,7 @@ class ViewController: UIViewController {
     }
     
     
+    // MARK: - style
     private func cornerRad(button: UIButton){
             button.layer.cornerRadius = 20
         }
@@ -55,7 +56,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         buttonStyle()
-        //model.calculText = textView.text
+        textView.text = "1 + 2 = 3"
+        
         // Do any additional setup after loading the view.
     }
     
@@ -81,11 +83,11 @@ class ViewController: UIViewController {
         let buttonTapped = sender.tag
         model.calculText = textView.text
         
-        if model.canAddOperator && model.expressionIsCorrect{
+        if model.canAddOperator && model.expressionIsCorrect {
             // Continue operation with precedent result
             if model.expressionHaveResult{
                 textView.text.removeAll()
-                if let displayNewResult = model.elements.last{
+                if let displayNewResult = model.elements.last {
                 textView.text.append("\(displayNewResult)")
                 }
             }
@@ -100,12 +102,7 @@ class ViewController: UIViewController {
             case 4:
                 textView.text.append(" / ")
             case 5:
-                /*if model.expressionIsCorrect{*/
                 textView.text.append(".")
-//                }else{
-//                    alert(message: model.alertText)
-//                }
-
             case 6:
                 textView.text = ""
             default:
@@ -117,9 +114,10 @@ class ViewController: UIViewController {
         }
     }
     
+    // Erase last entrie
     @IBAction func erasedButton(_ sender: UIButton) {
         if !expressionHaveResult {
-            if textView.text.last == " "{
+            if textView.text.last == " " {
                 textView.text.removeLast()
             }
         let newEntrie = String(textView.text.dropLast())
@@ -134,8 +132,7 @@ class ViewController: UIViewController {
         
     }
     
-    
-    
+    // Clear All
     @IBAction func allClear(_ sender: UIButton) {
         textView.text = ""
     }
@@ -147,8 +144,7 @@ class ViewController: UIViewController {
         if expressionHaveResult {
             model.alertText = AlertText.AlertCases.haveEnoughtElements.rawValue
             alert(message: model.alertText)
-        } else if model.expressionIsCorrect && model.expressionHaveEnoughElement{
-            //model.displayResult = (" = \(String(describing: model.makeCalcul()))")
+        } else if model.expressionIsCorrect && model.expressionHaveEnoughElement {
             if let resultPrint = model.makeCalcul() {
                 let doubleToIntString = resultPrint.replacingOccurrences(of: ".0", with: "")
                 textView.text.append(" = \(doubleToIntString)")

@@ -11,24 +11,39 @@ import Foundation
 final class CountOnMeModel {
     
     let result: Double = 0
-    var displayResult = ""
     var alertText = "Non valide"
     var left = ""
     var right = ""
     var calculText: String = ""
-    
     
     // Transforms calculText into an array of Strings
          var elements: [String] {
             return calculText.split(separator: " ").map { "\($0)" }
         }
     
+    
+    // MARK: - Error check computed variables
+    // Is already a result
     var expressionHaveResult: Bool {
           return calculText.firstIndex(of: "=") != nil
  }
+    
+    // Check the number of decimal
+    func numberOfDecimal() -> Int {
+        var decimalCount = 0
+        if let lastElement: String = elements.last {
+            if lastElement.contains(".") {
+            decimalCount += 1
+        }
+            print("There are \(decimalCount) . last element")// check in console
+        }
+        return decimalCount
+    }
+    
+    // Check if is already there a decimal
     var isDecimal: Bool {
         if let lastElement = elements.last {
-            if lastElement.suffix(1) == "." /*|| lastElement.contains(".")*/{
+            if lastElement.suffix(1) == "." || numberOfDecimal() >= 1 {
             print("\(lastElement)")
             print("isDecimal : true")// check in console
             return true
@@ -38,18 +53,17 @@ final class CountOnMeModel {
         return false
     }
 
-    //MARK: Error check computed variables
+    
     var expressionIsCorrect: Bool {
         print(elements.last as Any)
-        if elements.last != "+" && elements.last != "-" && elements.last != "x" && elements.last != "/" && !isDecimal{
+        if elements.last != "+" && elements.last != "-" && elements.last != "x" && elements.last != "/" && !isDecimal {
             print("expressionIsCorrect : true")// check in console
             return true
-        }else{
+        } else {
             alertText = AlertText.AlertCases.notCorrectExpression.rawValue
             print("expressionIsCorrect : false")// check in console
             return false
         }
-        
     }
     
     var expressionHaveEnoughElement: Bool {
@@ -65,10 +79,7 @@ final class CountOnMeModel {
         if elements.last != "+" && elements.last != "-"  && elements.last != "x" && elements.last != "/" {
             print("canAddOperator : true")// check in console
             return true
-        }/*else if expressionHaveResult{
-            print("canAddOperator : true car il ya un resultat")// check in console
-            return true
-        }*/else{
+        } else {
             print("canAddOperator : false")// check in console
             alertText = AlertText.AlertCases.haveAlreadyOperator.rawValue
         }
@@ -76,6 +87,7 @@ final class CountOnMeModel {
     }
     
     
+    // MARK: - Fonctionnalities
     // Clear elements
     func clearAllElements() {
      calculText = ""
@@ -119,7 +131,7 @@ final class CountOnMeModel {
             default: fatalError("Operateur inconnu !")
             }
     
-            for _ in 1...3{
+            for _ in 1...3 {
                 operationsToReduce.remove(at: index)
             }
             operationsToReduce.insert("\(result)", at: index)
@@ -136,12 +148,8 @@ final class CountOnMeModel {
     }
     
     
-    // Replace the first index with result
-    func startingWithResult(){
-        
-    }
-    
-    func checkArrayInconsole(in array: [String]){
+    // Function to check in console
+    func checkArrayInconsole(in array: [String]) {
         print("operationToReduce contient :")
         for eachElement in array {
             print("\(eachElement)")
