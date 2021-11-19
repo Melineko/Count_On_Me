@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController {
     
     // MARK: - outlets
+    @IBOutlet weak var resultView: UILabel!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet var numberButtons: [UIButton]!
     @IBOutlet weak var eraseButton: UIButton!
@@ -85,7 +86,7 @@ class ViewController: UIViewController {
         
         if model.canAddOperator && model.expressionIsCorrect {
             // Continue operation with precedent result
-            if model.expressionHaveResult{
+            if model.expressionHaveResult {
                 textView.text.removeAll()
                 if let displayNewResult = model.elements.last {
                 textView.text.append("\(displayNewResult)")
@@ -147,7 +148,7 @@ class ViewController: UIViewController {
         } else if model.expressionIsCorrect && model.expressionHaveEnoughElement {
             if let resultPrint = model.makeCalcul() {
                 let doubleToIntString = resultPrint.replacingOccurrences(of: ".0", with: "")
-                textView.text.append(" = \(doubleToIntString)")
+                self.resultView.text = "= \(doubleToIntString)"
             }
         } else {
             alert(message:model.alertText)

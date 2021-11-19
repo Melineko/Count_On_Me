@@ -32,6 +32,7 @@ final class CountOnMeModel {
     func numberOfDecimal() -> Int {
         var decimalCount = 0
         if let lastElement: String = elements.last {
+            print(lastElement)
             if lastElement.contains(".") {
             decimalCount += 1
         }
@@ -43,7 +44,7 @@ final class CountOnMeModel {
     // Check if is already there a decimal
     var isDecimal: Bool {
         if let lastElement = elements.last {
-            if lastElement.suffix(1) == "." || numberOfDecimal() >= 1 {
+            if lastElement.suffix(1) == "." || numberOfDecimal() > 0 {
             print("\(lastElement)")
             print("isDecimal : true")// check in console
             return true

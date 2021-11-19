@@ -26,14 +26,23 @@
                                 <rect key="frame" x="15" y="54" width="384" height="788"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" textAlignment="right" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lZe-qL-9pl">
-                                        <rect key="frame" x="0.0" y="0.0" width="384" height="123"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="384" height="73"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="300" id="KUm-1r-jUZ"/>
+                                            <constraint firstAttribute="height" constant="250" id="KUm-1r-jUZ"/>
                                         </constraints>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dZX-gj-iN8">
+                                        <rect key="frame" x="0.0" y="88" width="384" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="g9q-Qo-rbz"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="32"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="isI-Gg-Iye" userLabel="Stack View-touchButtons">
                                         <rect key="frame" x="0.0" y="138" width="384" height="650"/>
                                         <subviews>
@@ -313,6 +322,7 @@
                         <outlet property="equalButton" destination="Ce1-T4-biu" id="eY5-tQ-t0h"/>
                         <outlet property="eraseButton" destination="eLt-6u-125" id="T01-z0-ccO"/>
                         <outlet property="pointDecimalButton" destination="G1B-Ew-Boc" id="wLn-6i-Svq"/>
+                        <outlet property="resultView" destination="dZX-gj-iN8" id="Vde-hW-7wF"/>
                         <outlet property="textView" destination="lZe-qL-9pl" id="5Eq-CC-tSC"/>
                         <outletCollection property="numberButtons" destination="Raa-av-x4n" collectionClass="NSMutableArray" id="P52-Zx-bMS"/>
                         <outletCollection property="numberButtons" destination="S66-ub-JAX" collectionClass="NSMutableArray" id="2lv-EY-kZ4"/>
