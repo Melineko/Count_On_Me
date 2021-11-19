@@ -28,14 +28,14 @@ final class CountOnMeModel {
  }
     var isDecimal: Bool {
         if let lastElement = elements.last {
-            if lastElement.suffix(1) != "." || lastElement.contains = "."{
+            if lastElement.suffix(1) == "." /*|| lastElement.contains(".")*/{
             print("\(lastElement)")
-            print("isDecimal : false")// check in console
-            return false
+            print("isDecimal : true")// check in console
+            return true
         }
-        print("isDecimal : true")// check in console
+        print("isDecimal : false")// check in console
         }
-        return true
+        return false
     }
 
     //MARK: Error check computed variables
