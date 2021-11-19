@@ -82,12 +82,14 @@ class ViewController: UIViewController {
         model.calculText = textView.text
         
         if model.canAddOperator && model.expressionIsCorrect{
+            // Continue operation with precedent result
             if model.expressionHaveResult{
                 textView.text.removeAll()
-                if let displayNewResult = model.elements.first{
+                if let displayNewResult = model.elements.last{
                 textView.text.append("\(displayNewResult)")
                 }
             }
+            
             switch buttonTapped {
             case 1:
                 textView.text.append(" - ")
