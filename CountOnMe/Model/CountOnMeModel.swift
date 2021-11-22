@@ -15,6 +15,7 @@ final class CountOnMeModel {
     var left = ""
     var right = ""
     var calculText: String = ""
+    var resultText: String = ""
     
     // Transforms calculText into an array of Strings
          var elements: [String] {
@@ -25,7 +26,7 @@ final class CountOnMeModel {
     // MARK: - Error check computed variables
     // Is already a result
     var expressionHaveResult: Bool {
-          return calculText.firstIndex(of: "=") != nil
+          return resultText.firstIndex(of: "=") != nil
  }
     
     // Check the number of decimal
@@ -36,7 +37,7 @@ final class CountOnMeModel {
             if lastElement.contains(".") {
             decimalCount += 1
         }
-            print("There are \(decimalCount) . last element")// check in console
+            print("Il y a \(decimalCount) décimale dans last element")// check in console
         }
         return decimalCount
     }

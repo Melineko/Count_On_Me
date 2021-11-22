@@ -25,7 +25,8 @@ class ViewController: UIViewController {
     private let model = CountOnMeModel()
     
     var expressionHaveResult: Bool {
-          return textView.text.firstIndex(of: "=") != nil
+        return self.resultView.text?.contains("=") != nil
+        
  }
     
     var elements: [String] {
@@ -57,7 +58,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         buttonStyle()
-        textView.text = "1 + 2 = 3"
+        textView.text = ""
+        resultView.text = ""
         
         // Do any additional setup after loading the view.
     }
@@ -68,14 +70,24 @@ class ViewController: UIViewController {
     // Add numbers
     @IBAction func tappedNumberButton(_ sender: UIButton) {
         model.calculText = textView.text
+        if let resultPrint = self.resultView.text {
+        model.resultText = resultPrint
+        }
         guard let numberText = sender.title(for: .normal) else {
             return
         }
-        
-        if expressionHaveResult {
-            textView.text = ""
+        if model.expressionHaveResult {
+          textView.text = ""
+          resultView.text = ""
+          print("Tout est éffcé.")
         }
+//        if expressionHaveResult {
+//            textView.text = ""
+//            resultView.text = ""
+//            print("Tout est éffcé.")
+//        }
         textView.text.append(numberText)
+        print("\(numberText) a été ajouté")
         
     }
     
@@ -83,13 +95,19 @@ class ViewController: UIViewController {
     @IBAction func tappedButton(_ sender: UIButton) {
         let buttonTapped = sender.tag
         model.calculText = textView.text
+        if let resultPrint = self.resultView.text {
+        model.resultText = resultPrint
+        }
         
         if model.canAddOperator && model.expressionIsCorrect {
             // Continue operation with precedent result
             if model.expressionHaveResult {
                 textView.text.removeAll()
-                if let displayNewResult = model.elements.last {
-                textView.text.append("\(displayNewResult)")
+                resultView.text = ""
+                if let displayNewResult = model.makeCalcul() {
+                let doubleToIntString = displayNewResult.replacingOccurrences(of: ".0", with: "")
+                textView.text.append("\(doubleToIntString)")
+                print("le résultat : \(doubleToIntString) a été transposé dans la textView")
                 }
             }
             
@@ -117,7 +135,10 @@ class ViewController: UIViewController {
     
     // Erase last entrie
     @IBAction func erasedButton(_ sender: UIButton) {
-        if !expressionHaveResult {
+        if let resultPrint = self.resultView.text {
+        model.resultText = resultPrint
+        }
+        if !model.expressionHaveResult {
             if textView.text.last == " " {
                 textView.text.removeLast()
             }
@@ -136,13 +157,18 @@ class ViewController: UIViewController {
     // Clear All
     @IBAction func allClear(_ sender: UIButton) {
         textView.text = ""
+        resultView.text = ""
     }
     
 
     @IBAction func tappedEqualButton(_ sender: UIButton) {
         model.calculText = textView.text
+        if let resultPrint = self.resultView.text {
+        model.resultText = resultPrint
+        }
         
-        if expressionHaveResult {
+        
+        if model.expressionHaveResult {
             model.alertText = AlertText.AlertCases.haveEnoughtElements.rawValue
             alert(message: model.alertText)
         } else if model.expressionIsCorrect && model.expressionHaveEnoughElement {
@@ -153,6 +179,7 @@ class ViewController: UIViewController {
         } else {
             alert(message:model.alertText)
         }
+        
     }
     
     func alert(message: String) {
