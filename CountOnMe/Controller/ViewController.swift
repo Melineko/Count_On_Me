@@ -24,11 +24,6 @@ class ViewController: UIViewController {
     // Import the model
     private let model = CountOnMeModel()
     
-    var expressionHaveResult: Bool {
-        return self.resultView.text?.contains("=") != nil
-        
- }
-    
     var elements: [String] {
         return textView.text.split(separator: " ").map { "\($0)" }
     }
@@ -120,8 +115,6 @@ class ViewController: UIViewController {
                 textView.text.append(" x ")
             case 4:
                 textView.text.append(" / ")
-            case 5:
-                textView.text.append(".")
             case 6:
                 textView.text = ""
             default:
@@ -132,6 +125,16 @@ class ViewController: UIViewController {
             alert(message: model.alertText)
         }
     }
+    
+    @IBAction func decimalButton(_ sender: UIButton) {
+        model.calculText = textView.text
+        if !model.isDecimal{
+        textView.text.append(".")
+        }
+        return
+    }
+    
+    
     
     // Erase last entrie
     @IBAction func erasedButton(_ sender: UIButton) {

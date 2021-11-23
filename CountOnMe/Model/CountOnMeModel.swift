@@ -58,7 +58,7 @@ final class CountOnMeModel {
     
     var expressionIsCorrect: Bool {
         print(elements.last as Any)
-        if elements.last != "+" && elements.last != "-" && elements.last != "x" && elements.last != "/" && !isDecimal {
+        if elements.last != "+" && elements.last != "-" && elements.last != "x" && elements.last != "/" {
             print("expressionIsCorrect : true")// check in console
             return true
         } else {
