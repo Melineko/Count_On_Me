@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController {
     
     // MARK: - outlets
+    @IBOutlet var mainView: UIView!
     @IBOutlet weak var resultView: UILabel!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet var numberButtons: [UIButton]!
@@ -28,31 +29,17 @@ class ViewController: UIViewController {
         return textView.text.split(separator: " ").map { "\($0)" }
     }
     
-    
-    // MARK: - style
-    private func cornerRad(button: UIButton){
-            button.layer.cornerRadius = 20
-        }
-    
-    // Round angle style of buttons
-    private func buttonStyle(){
-        for button in numberButtons{
-        cornerRad(button: button)
-        }
-        for button in operatorButtons{
-        cornerRad(button: button)
-        }
-        cornerRad(button: eraseButton)
-        cornerRad(button: ACButton)
-        cornerRad(button: pointDecimalButton)
-        cornerRad(button: equalButton)
-    }
+    let styleButton = VisualStyle()
     
     
     // MARK: - viewLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        buttonStyle()
+        // set style
+        styleButton.buttonStyleSetting(arrayNumbers: numberButtons, arrayOperator: operatorButtons, erase: eraseButton, ac: ACButton, decimal: pointDecimalButton, equal: equalButton)
+        let bgStyle = VisualStyle()
+        bgStyle.backgroundStyle(ofView: mainView)
+        // refresh display
         textView.text = ""
         resultView.text = ""
         
@@ -74,13 +61,8 @@ class ViewController: UIViewController {
         if model.expressionHaveResult {
           textView.text = ""
           resultView.text = ""
-          print("Tout est éffcé.")
+          print("Tout est éffacé.")
         }
-//        if expressionHaveResult {
-//            textView.text = ""
-//            resultView.text = ""
-//            print("Tout est éffcé.")
-//        }
         textView.text.append(numberText)
         print("\(numberText) a été ajouté")
         
@@ -133,7 +115,6 @@ class ViewController: UIViewController {
         }
         return
     }
-    
     
     
     // Erase last entrie

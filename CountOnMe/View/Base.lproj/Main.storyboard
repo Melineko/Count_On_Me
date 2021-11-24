@@ -321,6 +321,7 @@
                         <outlet property="ACButton" destination="dLn-0a-9WQ" id="jgi-Ap-xiX"/>
                         <outlet property="equalButton" destination="Ce1-T4-biu" id="eY5-tQ-t0h"/>
                         <outlet property="eraseButton" destination="eLt-6u-125" id="T01-z0-ccO"/>
+                        <outlet property="mainView" destination="eIh-hr-C95" id="nay-Eb-XWt"/>
                         <outlet property="pointDecimalButton" destination="G1B-Ew-Boc" id="wLn-6i-Svq"/>
                         <outlet property="resultView" destination="dZX-gj-iN8" id="Vde-hW-7wF"/>
                         <outlet property="textView" destination="lZe-qL-9pl" id="5Eq-CC-tSC"/>
