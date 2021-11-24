@@ -8,6 +8,12 @@
 
 import Foundation
 
+extension Double {
+    var stringWithoutZeroFraction: String {
+        return truncatingRemainder(dividingBy: 1) == 0 ? String(format: "%.0f", self) : String(self)
+    }
+}
+
 final class CountOnMeModel {
     
     let result: Double = 0
@@ -136,7 +142,7 @@ final class CountOnMeModel {
             for _ in 1...3 {
                 operationsToReduce.remove(at: index)
             }
-            operationsToReduce.insert("\(result)", at: index)
+            operationsToReduce.insert("\(result.stringWithoutZeroFraction)", at: index)
                                                 
             index = 0
             print("Elements après sous-total :")// check in console

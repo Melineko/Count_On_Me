@@ -176,8 +176,8 @@ class ViewController: UIViewController {
             alert(message: model.alertText)
         } else if model.expressionIsCorrect && model.expressionHaveEnoughElement {
             if let resultPrint = model.makeCalcul() {
-                let doubleToIntString = resultPrint.replacingOccurrences(of: ".0", with: "")
-                self.resultView.text = "= \(doubleToIntString)"
+                //let doubleToIntString = String(format:"%g", resultPrint)
+                self.resultView.text = "= \(resultPrint)"
             }
         } else {
             alert(message:model.alertText)
@@ -192,4 +192,5 @@ class ViewController: UIViewController {
     }
 
 }
+
 
