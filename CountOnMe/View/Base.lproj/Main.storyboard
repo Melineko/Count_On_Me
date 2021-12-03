@@ -26,7 +26,7 @@
                                 <rect key="frame" x="15" y="54" width="384" height="788"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" textAlignment="right" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lZe-qL-9pl">
-                                        <rect key="frame" x="0.0" y="0.0" width="384" height="64"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="384" height="185"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="185" id="KUm-1r-jUZ"/>
                                         </constraints>
@@ -35,7 +35,7 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dZX-gj-iN8">
-                                        <rect key="frame" x="0.0" y="79" width="384" height="100"/>
+                                        <rect key="frame" x="0.0" y="200" width="384" height="88"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="g9q-Qo-rbz"/>
                                         </constraints>
@@ -44,16 +44,16 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="isI-Gg-Iye" userLabel="Stack View-touchButtons">
-                                        <rect key="frame" x="0.0" y="194" width="384" height="594"/>
+                                        <rect key="frame" x="0.0" y="303" width="384" height="485"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="U2a-5D-kgc">
-                                                <rect key="frame" x="0.0" y="0.0" width="384" height="111"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="384" height="89"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GaK-lo-G8Z">
-                                                        <rect key="frame" x="0.0" y="0.0" width="187" height="111"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="187" height="89"/>
                                                         <subviews>
                                                             <button opaque="NO" tag="6" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dLn-0a-9WQ">
-                                                                <rect key="frame" x="0.0" y="0.0" width="187" height="111"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="187" height="89"/>
                                                                 <color key="backgroundColor" red="0.65490196079999996" green="0.75294117650000003" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <fontDescription key="fontDescription" name="NotoSansMyanmar-Regular" family="Noto Sans Myanmar" pointSize="35"/>
                                                                 <state key="normal" title="AC">
@@ -66,10 +66,10 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="R9K-aY-Adw">
-                                                        <rect key="frame" x="197" y="0.0" width="187" height="111"/>
+                                                        <rect key="frame" x="197" y="0.0" width="187" height="89"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eLt-6u-125">
-                                                                <rect key="frame" x="0.0" y="0.0" width="88.5" height="111"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="88.5" height="89"/>
                                                                 <color key="backgroundColor" red="0.65490196079999996" green="0.75294117650000003" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                                                                 <color key="tintColor" red="0.1333333333" green="0.18823529410000001" blue="0.29411764709999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -83,7 +83,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KS5-Mz-rcC">
-                                                                <rect key="frame" x="98.5" y="0.0" width="88.5" height="111"/>
+                                                                <rect key="frame" x="98.5" y="0.0" width="88.5" height="89"/>
                                                                 <color key="backgroundColor" red="0.52156862749999999" green="0.72156862749999995" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <fontDescription key="fontDescription" name="NotoSansMyanmar-Regular" family="Noto Sans Myanmar" pointSize="43"/>
                                                                 <state key="normal" title="/">
@@ -98,10 +98,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xWG-wS-5L9">
-                                                <rect key="frame" x="0.0" y="121" width="384" height="110.5"/>
+                                                <rect key="frame" x="0.0" y="99" width="384" height="89"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Raa-av-x4n">
-                                                        <rect key="frame" x="0.0" y="0.0" width="88.5" height="110.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="88.5" height="89"/>
                                                         <color key="backgroundColor" red="0.91764705879999997" green="0.93725490199999995" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name="NotoSansMyanmar-Regular" family="Noto Sans Myanmar" pointSize="35"/>
                                                         <color key="tintColor" systemColor="systemGrayColor"/>
@@ -113,7 +113,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jd7-ld-hSU">
-                                                        <rect key="frame" x="98.5" y="0.0" width="88.5" height="110.5"/>
+                                                        <rect key="frame" x="98.5" y="0.0" width="88.5" height="89"/>
                                                         <color key="backgroundColor" red="0.91764705879999997" green="0.93725490199999995" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name="NotoSansMyanmar-Regular" family="Noto Sans Myanmar" pointSize="35"/>
                                                         <color key="tintColor" systemColor="systemGrayColor"/>
@@ -125,7 +125,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UDN-zf-T0y">
-                                                        <rect key="frame" x="197" y="0.0" width="88.5" height="110.5"/>
+                                                        <rect key="frame" x="197" y="0.0" width="88.5" height="89"/>
                                                         <color key="backgroundColor" red="0.91764705879999997" green="0.93725490199999995" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name="NotoSansMyanmar-Regular" family="Noto Sans Myanmar" pointSize="35"/>
                                                         <color key="tintColor" systemColor="systemGrayColor"/>
@@ -137,7 +137,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qMj-Of-bCU">
-                                                        <rect key="frame" x="295.5" y="0.0" width="88.5" height="110.5"/>
+                                                        <rect key="frame" x="295.5" y="0.0" width="88.5" height="89"/>
                                                         <color key="backgroundColor" red="0.52156862749999999" green="0.72156862749999995" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name="NotoSansMyanmar-Regular" family="Noto Sans Myanmar" pointSize="43"/>
                                                         <state key="normal" title="x">
@@ -150,10 +150,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="WCv-mh-kCr">
-                                                <rect key="frame" x="0.0" y="241.5" width="384" height="111"/>
+                                                <rect key="frame" x="0.0" y="198" width="384" height="89"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tMJ-tH-k5u">
-                                                        <rect key="frame" x="0.0" y="0.0" width="88.5" height="111"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="88.5" height="89"/>
                                                         <color key="backgroundColor" red="0.91764705879999997" green="0.93725490199999995" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name="NotoSansMyanmar-Regular" family="Noto Sans Myanmar" pointSize="35"/>
                                                         <color key="tintColor" systemColor="systemGrayColor"/>
@@ -165,7 +165,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lad-SR-mqj">
-                                                        <rect key="frame" x="98.5" y="0.0" width="88.5" height="111"/>
+                                                        <rect key="frame" x="98.5" y="0.0" width="88.5" height="89"/>
                                                         <color key="backgroundColor" red="0.91764705879999997" green="0.93725490199999995" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name="NotoSansMyanmar-Regular" family="Noto Sans Myanmar" pointSize="35"/>
                                                         <color key="tintColor" systemColor="systemGrayColor"/>
@@ -177,7 +177,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S66-ub-JAX">
-                                                        <rect key="frame" x="197" y="0.0" width="88.5" height="111"/>
+                                                        <rect key="frame" x="197" y="0.0" width="88.5" height="89"/>
                                                         <color key="backgroundColor" red="0.91764705879999997" green="0.93725490199999995" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name="NotoSansMyanmar-Regular" family="Noto Sans Myanmar" pointSize="35"/>
                                                         <color key="tintColor" systemColor="systemGrayColor"/>
@@ -189,7 +189,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DQU-P5-55X">
-                                                        <rect key="frame" x="295.5" y="0.0" width="88.5" height="111"/>
+                                                        <rect key="frame" x="295.5" y="0.0" width="88.5" height="89"/>
                                                         <color key="backgroundColor" red="0.52156862749999999" green="0.72156862749999995" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name="NotoSansMyanmar-Regular" family="Noto Sans Myanmar" pointSize="43"/>
                                                         <state key="normal" title="+">
@@ -202,10 +202,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ogr-Aw-e1h" userLabel="Stack View-boutonsL1">
-                                                <rect key="frame" x="0.0" y="362.5" width="384" height="110.5"/>
+                                                <rect key="frame" x="0.0" y="297" width="384" height="89"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W04-n1-Wen">
-                                                        <rect key="frame" x="0.0" y="0.0" width="88.5" height="110.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="88.5" height="89"/>
                                                         <color key="backgroundColor" red="0.91764705879999997" green="0.93725490199999995" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name="NotoSansMyanmar-Regular" family="Noto Sans Myanmar" pointSize="35"/>
                                                         <color key="tintColor" systemColor="systemGrayColor"/>
@@ -217,7 +217,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EPx-3X-zTa">
-                                                        <rect key="frame" x="98.5" y="0.0" width="88.5" height="110.5"/>
+                                                        <rect key="frame" x="98.5" y="0.0" width="88.5" height="89"/>
                                                         <color key="backgroundColor" red="0.91764705879999997" green="0.93725490199999995" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name="NotoSansMyanmar-Regular" family="Noto Sans Myanmar" pointSize="35"/>
                                                         <color key="tintColor" systemColor="systemGrayColor"/>
@@ -229,7 +229,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hkr-13-i1X">
-                                                        <rect key="frame" x="197" y="0.0" width="88.5" height="110.5"/>
+                                                        <rect key="frame" x="197" y="0.0" width="88.5" height="89"/>
                                                         <color key="backgroundColor" red="0.91764705879999997" green="0.93725490199999995" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name="NotoSansMyanmar-Regular" family="Noto Sans Myanmar" pointSize="35"/>
                                                         <color key="tintColor" systemColor="systemGrayColor"/>
@@ -241,7 +241,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3zr-HC-0N9">
-                                                        <rect key="frame" x="295.5" y="0.0" width="88.5" height="110.5"/>
+                                                        <rect key="frame" x="295.5" y="0.0" width="88.5" height="89"/>
                                                         <color key="backgroundColor" red="0.52156862749999999" green="0.72156862749999995" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name="NotoSansMyanmar-Regular" family="Noto Sans Myanmar" pointSize="43"/>
                                                         <state key="normal" title="-">
@@ -254,14 +254,14 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="vMD-Ic-BBi">
-                                                <rect key="frame" x="0.0" y="483" width="384" height="111"/>
+                                                <rect key="frame" x="0.0" y="396" width="384" height="89"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" id="If7-WK-8TA" userLabel="Stack View-boutonsL2">
                                                         <rect key="frame" x="0.0" y="0.0" width="187" height="122"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <subviews>
                                                             <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G1B-Ew-Boc">
-                                                                <rect key="frame" x="0.0" y="0.0" width="88.5" height="111"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="88.5" height="89"/>
                                                                 <color key="backgroundColor" red="0.91764705879999997" green="0.93725490199999995" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <fontDescription key="fontDescription" name="NotoSansMyanmar-Regular" family="Noto Sans Myanmar" pointSize="35"/>
                                                                 <state key="normal" title=".">
@@ -272,7 +272,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YD6-ul-r3f">
-                                                                <rect key="frame" x="98.5" y="0.0" width="88.5" height="111"/>
+                                                                <rect key="frame" x="98.5" y="0.0" width="88.5" height="89"/>
                                                                 <color key="backgroundColor" red="0.91764705879999997" green="0.93725490199999995" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <fontDescription key="fontDescription" name="NotoSansMyanmar-Regular" family="Noto Sans Myanmar" pointSize="35"/>
                                                                 <color key="tintColor" systemColor="systemGrayColor"/>
@@ -286,10 +286,10 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Pg-Xp-S2Z">
-                                                        <rect key="frame" x="197" y="0.0" width="187" height="111"/>
+                                                        <rect key="frame" x="197" y="0.0" width="187" height="89"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ce1-T4-biu">
-                                                                <rect key="frame" x="0.0" y="0.0" width="187" height="111"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="187" height="89"/>
                                                                 <color key="backgroundColor" red="0.36078431370000003" green="0.4549019608" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <fontDescription key="fontDescription" name="NotoSansMyanmar-Regular" family="Noto Sans Myanmar" pointSize="50"/>
                                                                 <state key="normal" title="=">

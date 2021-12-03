@@ -20,17 +20,22 @@ class ViewController: UIViewController {
     @IBOutlet var operatorButtons: [UIButton]!
     @IBOutlet weak var pointDecimalButton: UIButton!
     @IBOutlet weak var equalButton: UIButton!
-
     
     // Import the model
     private let model = CountOnMeModel()
-    
-    var elements: [String] {
-        return textView.text.split(separator: " ").map { "\($0)" }
-    }
-    
+
+    // Import the style
     let styleButton = VisualStyle()
     
+    func operationViewLink() {
+        textView.text = model.calculText
+    }
+    func resultViewLink() {
+        // because label is optional
+        if let resultPrint = self.resultView {
+            resultPrint.text = model.resultText
+        }
+    }
     
     // MARK: - viewLifeCycle
     override func viewDidLoad() {
@@ -39,6 +44,7 @@ class ViewController: UIViewController {
         styleButton.buttonStyleSetting(arrayNumbers: numberButtons, arrayOperator: operatorButtons, erase: eraseButton, ac: ACButton, decimal: pointDecimalButton, equal: equalButton)
         let bgStyle = VisualStyle()
         bgStyle.backgroundStyle(ofView: mainView)
+        
         // refresh display
         textView.text = ""
         resultView.text = ""
@@ -51,85 +57,41 @@ class ViewController: UIViewController {
     
     // Add numbers
     @IBAction func tappedNumberButton(_ sender: UIButton) {
-        model.calculText = textView.text
-        if let resultPrint = self.resultView.text {
-        model.resultText = resultPrint
-        }
         guard let numberText = sender.title(for: .normal) else {
             return
         }
-        if model.expressionHaveResult {
-          textView.text = ""
-          resultView.text = ""
-          print("Tout est éffacé.")
-        }
-        textView.text.append(numberText)
-        print("\(numberText) a été ajouté")
+        model.tappedNumber(number: numberText)
+        operationViewLink()
+        resultViewLink()
         
     }
     
     // Add operaor, decimal, clear
     @IBAction func tappedButton(_ sender: UIButton) {
         let buttonTapped = sender.tag
-        model.calculText = textView.text
-        if let resultPrint = self.resultView.text {
-        model.resultText = resultPrint
-        }
         
         if model.canAddOperator && model.expressionIsCorrect {
-            // Continue operation with precedent result
-            if model.expressionHaveResult {
-                textView.text.removeAll()
-                resultView.text = ""
-                if let displayNewResult = model.makeCalcul() {
-                let doubleToIntString = displayNewResult.replacingOccurrences(of: ".0", with: "")
-                textView.text.append("\(doubleToIntString)")
-                print("le résultat : \(doubleToIntString) a été transposé dans la textView")
-                }
-            }
-            
-            switch buttonTapped {
-            case 1:
-                textView.text.append(" - ")
-            case 2:
-                textView.text.append(" + ")
-            case 3:
-                textView.text.append(" x ")
-            case 4:
-                textView.text.append(" / ")
-            case 6:
-                textView.text = ""
-            default:
-            alert(message: model.alertText)
-            }
-            
+            model.tappedOperator(buttonTapped: buttonTapped)
+            operationViewLink()
+            resultViewLink()
         } else {
             alert(message: model.alertText)
         }
     }
     
     @IBAction func decimalButton(_ sender: UIButton) {
-        model.calculText = textView.text
-        if !model.isDecimal{
-        textView.text.append(".")
-        }
-        return
+        model.tappedDecimale()
+        operationViewLink()
     }
     
     
     // Erase last entrie
     @IBAction func erasedButton(_ sender: UIButton) {
-        if let resultPrint = self.resultView.text {
-        model.resultText = resultPrint
-        }
+    
         if !model.expressionHaveResult {
-            if textView.text.last == " " {
-                textView.text.removeLast()
-            }
-        let newEntrie = String(textView.text.dropLast())
-        textView.text = ("\(newEntrie)")
-            print ("\(newEntrie)")// to check in console
-            print ("\(model.calculText)")
+            model.tappedErase()
+            operationViewLink()
+            resultViewLink()
         } else {
             model.alertText = AlertText.AlertCases.haveEnoughtElements.rawValue
             alert(message: model.alertText)
@@ -140,26 +102,25 @@ class ViewController: UIViewController {
     
     // Clear All
     @IBAction func allClear(_ sender: UIButton) {
-        textView.text = ""
-        resultView.text = ""
+        model.tappedAllClear()
+        operationViewLink()
+        resultViewLink()
+        
     }
     
 
     @IBAction func tappedEqualButton(_ sender: UIButton) {
-        model.calculText = textView.text
-        if let resultPrint = self.resultView.text {
-        model.resultText = resultPrint
-        }
-        
         
         if model.expressionHaveResult {
             model.alertText = AlertText.AlertCases.haveEnoughtElements.rawValue
             alert(message: model.alertText)
         } else if model.expressionIsCorrect && model.expressionHaveEnoughElement {
             if let resultPrint = model.makeCalcul() {
-                //let doubleToIntString = String(format:"%g", resultPrint)
-                self.resultView.text = "= \(resultPrint)"
+                //let doubleToIntString = String(format:"%.2f", resultPrint) 2 chiffres apres virgule
+                model.resultText = "= \(resultPrint)"
             }
+            operationViewLink()
+            resultViewLink()
         } else {
             alert(message:model.alertText)
         }

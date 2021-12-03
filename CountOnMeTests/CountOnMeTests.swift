@@ -10,25 +10,44 @@ import XCTest
 @testable import CountOnMe
 
 class CountOnMeTests: XCTestCase {
-
+    var model : CountOnMeModel!
+    var result = "0"
+    
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        super.setUp()
+        model = CountOnMeModel()
     }
 
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func testGivenAdditionIsMaking_WhenTapEqual_ThenResultIsSum() {
+        model.tappedNumber(number: "2")
+        model.tappedOperator(buttonTapped: 2)// tag 2 for "+"
+        model.tappedNumber(number: "3")
+        if let unwrapResult = model.makeCalcul(){
+            result = unwrapResult
         }
+        XCTAssert(result == "5")
     }
+    
+    func testGivenSoustractionIsMaking_WhenTapEqual_ThenResultIsDifference() {
+        model.tappedNumber(number: "5")
+        model.tappedOperator(buttonTapped: 1)// tag 1 for "-"
+        model.tappedNumber(number: "3")
+        if let unwrapResult = model.makeCalcul(){
+            result = unwrapResult
+        }
+        XCTAssert(result == "2")
+    }
+    
+    func testGivenMultiplicationIsMaking_WhenTapEqual_ThenResultIsProduct() {
+        model.tappedNumber(number: "3")
+        model.tappedOperator(buttonTapped: 3)// tag 3 for "x"
+        model.tappedNumber(number: "5")
+        if let unwrapResult = model.makeCalcul(){
+            result = unwrapResult
+        }
+        XCTAssert(result == "15")
+    }
+    
+    
 
 }
