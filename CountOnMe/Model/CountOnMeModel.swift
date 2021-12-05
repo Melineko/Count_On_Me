@@ -46,20 +46,28 @@ final class CountOnMeModel {
         return decimalCount
     }
     
-    // Check if is already there a decimal
-    var isDecimal: Bool {
+    // Check if last character of last element is decimal
+    var isLastCharacterDecimal: Bool {
         if let lastElement = elements.last {
-            if lastElement.suffix(1) == "." || numberOfDecimal() > 0 {
+            if lastElement.suffix(1) == "." {
             return true
         }
     }
+        return false
+    }
+    
+    // Check if is already there a decimal
+    var isDecimal: Bool {
+            if isLastCharacterDecimal || numberOfDecimal() > 0 {
+            return true
+        }
         return false
     }
 
     
     var expressionIsCorrect: Bool {
         print(elements.last as Any)
-        if elements.last != "+" && elements.last != "-" && elements.last != "x" && elements.last != "/" {
+        if elements.last != "+" && elements.last != "-" && elements.last != "x" && elements.last != "/" && !isLastCharacterDecimal {
             return true
         }
         alertText = AlertText.AlertCases.notCorrectExpression.rawValue
