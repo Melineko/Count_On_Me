@@ -50,9 +50,11 @@ class CountOnMeTests: XCTestCase {
     // Equal
     func testGivenCalcul_WhenTapEqual_ThenResultAppearsInResultText() {
         makeCalculWith(number1: "5", operatorUsed: 3, number2: "6", resultExpected: "30")
+        // tag 3 for "x"
         model.printResult()
         
         XCTAssert(model.resultText == "= 30")
+        XCTAssert(model.expressionHaveResult == true)
     }
     // Decimale
     func testGivenNumberWasTapped_WhenTapDecimaleAndNumber_ThenDecimalNumberAppear() {
@@ -94,7 +96,7 @@ class CountOnMeTests: XCTestCase {
     func testGivenNumberandDecimalTapped_WhenTapOperator_ThenAlertMessageAppears() {
         model.tappedNumber(number: "5")
         model.tappedDecimale()
-        model.tappedOperator(buttonTapped: 2)
+        model.tappedOperator(buttonTapped: 2)// tag 2 for "+"
         
         XCTAssert(model.expressionIsCorrect == false)
         XCTAssert(model.alertText == AlertText.AlertCases.notCorrectExpression.rawValue)
@@ -102,11 +104,18 @@ class CountOnMeTests: XCTestCase {
     // Operator tapped twice
     func testGivenOperatorTapped_WhenTapOperator_ThenAlertMessageAppears() {
         model.tappedNumber(number: "5")
-        model.tappedOperator(buttonTapped: 2)
-        model.tappedOperator(buttonTapped: 2)
+        model.tappedOperator(buttonTapped: 2)// tag 2 for "+"
+        model.tappedOperator(buttonTapped: 2)// tag 2 for "+"
         
         XCTAssert(model.canAddOperator == false)
         XCTAssert(model.alertText == AlertText.AlertCases.haveAlreadyOperator.rawValue)
+    }
+    // Enough elements
+    func testGivenOneNumber_WhenTapEqual_ThenAlertMessageAppears() {
+        model.tappedNumber(number: "2")
+        
+        XCTAssert(model.expressionHaveEnoughElement == false)
+        XCTAssert(model.alertText == AlertText.AlertCases.haveEnoughtElements.rawValue)
     }
     // Erase
     func testGivenEntrie_WhenTapErase_ThenLastEntrieIsRemoved() {
@@ -120,14 +129,36 @@ class CountOnMeTests: XCTestCase {
     // All Clear
     func testGivenEntrie_WhenTapAllClear_ThenRemoveAllTheEntries() {
         model.tappedNumber(number: "10")
-        model.tappedOperator(buttonTapped: 3)
+        model.tappedOperator(buttonTapped: 3)// tag 3 for "x"
         model.tappedNumber(number: "2")
         model.printResult()
         model.tappedAllClear()
         
         XCTAssert(model.calculText == "" && model.resultText == "")
+    }
+    // Continue with result
+    func testGivenResult_WhenTappedOperator_ThenResultGoToCalculView() {
+        model.tappedNumber(number: "5")
+        model.tappedOperator(buttonTapped: 2)// tag 2 for "+"
+        model.tappedNumber(number: "3")
+        model.printResult()
+        model.tappedOperator(buttonTapped: 4)// tag 4 for "/"
+        
+        XCTAssert(model.calculText == "8 / ")
         
     }
+    // Continue with result to make it decimal
+    func testGivenResult_WhenTappedDecimal_ThenResultGoToCalculView() {
+        model.tappedNumber(number: "5")
+        model.tappedOperator(buttonTapped: 2)// tag 2 for "+"
+        model.tappedNumber(number: "3")
+        model.printResult()
+        model.tappedDecimale()
+        
+        XCTAssert(model.calculText == "8.")
+        
+    }
+    
     
     
     

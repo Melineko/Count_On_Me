@@ -66,7 +66,7 @@ class ViewController: UIViewController {
         
     }
     
-    // Add operaor, decimal, clear
+    // Add operaor
     @IBAction func tappedButton(_ sender: UIButton) {
         let buttonTapped = sender.tag
         
@@ -79,6 +79,7 @@ class ViewController: UIViewController {
         }
     }
     
+    // Add decimal
     @IBAction func decimalButton(_ sender: UIButton) {
         model.tappedDecimale()
         operationViewLink()

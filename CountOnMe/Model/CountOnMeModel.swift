@@ -128,6 +128,14 @@ final class CountOnMeModel {
     
     // Decimale
     func tappedDecimale() {
+        // Take result to complete with decimal
+        if expressionHaveResult {
+            resultText = ""
+            if let displayNewResult = makeCalcul() {
+            let doubleToIntString = displayNewResult.replacingOccurrences(of: ".0", with: "")
+            calculText = "\(doubleToIntString)"
+            }
+        }
         if !isDecimal{
             calculText.append(".")
         
