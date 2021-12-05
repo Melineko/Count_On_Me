@@ -115,10 +115,7 @@ class ViewController: UIViewController {
             model.alertText = AlertText.AlertCases.haveEnoughtElements.rawValue
             alert(message: model.alertText)
         } else if model.expressionIsCorrect && model.expressionHaveEnoughElement {
-            if let resultPrint = model.makeCalcul() {
-                //let doubleToIntString = String(format:"%.2f", resultPrint) 2 chiffres apres virgule
-                model.resultText = "= \(resultPrint)"
-            }
+            model.printResult()
             operationViewLink()
             resultViewLink()
         } else {

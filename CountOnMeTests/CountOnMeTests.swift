@@ -47,31 +47,50 @@ class CountOnMeTests: XCTestCase {
         }
         XCTAssert(result == "9")
     }
-    
+    // Equal
+    func testGivenCalcul_WhenTapEqual_ThenResultAppearsInResultText() {
+        makeCalculWith(number1: "5", operatorUsed: 3, number2: "6", resultExpected: "30")
+        model.printResult()
+        
+        XCTAssert(model.resultText == "= 30")
+    }
+    // Decimale
+    func testGivenNumberWasTapped_WhenTapDecimaleAndNumber_ThenDecimalNumberAppear() {
+        model.tappedNumber(number: "2")
+        model.tappedDecimale()
+        model.tappedNumber(number: "8")
+        
+        XCTAssert(model.isDecimal == true)
+        XCTAssert(model.calculText == "2.8")
+    }
+    // Decimale tapped more than one time
+    func testGivenNumberWasTapped_WhenTapDecimaleTwice_ThenAdditionalDecimaleCantBePut() {
+        model.tappedNumber(number: "2")
+        model.tappedDecimale()
+        XCTAssert(model.isLastCharacterDecimal == true)
+        model.tappedDecimale()
+        model.tappedNumber(number: "8")
+        
+        XCTAssert(model.calculText == "2.8")
+    }
+    // Decimal tapped but already decimal in number
+    func testGivenDecimalNumberWasTapped_WhenTapDecimal_ThenAdditionalDecimaleCantBePut() {
+        model.tappedNumber(number: "2")
+        model.tappedDecimale()
+        model.tappedNumber(number: "8")
+        model.tappedDecimale()
+        
+        XCTAssert(model.numberOfDecimal() == 1)
+        XCTAssert(model.calculText == "2.8")
+    }
+    // 0. replace .
     func testGivenAllIsClear_WhenTapDecimale_ThenZeroIsPrintingbefore() {
         model.tappedAllClear()
         model.tappedDecimale()
         
         XCTAssert(model.calculText == "0.")
     }
-    
-    func testGivenNumberWasTapped_WhenTapDecimaleAndNumber_ThenDecimalNumberAppear() {
-        model.tappedNumber(number: "2")
-        model.tappedDecimale()
-        model.tappedNumber(number: "8")
-        
-        XCTAssert(model.calculText == "2.8")
-    }
-    
-    func testGivenNumberWasTapped_WhenTapDecimale2times_ThenAdditionalDecimaleCantBePut() {
-        model.tappedNumber(number: "2")
-        model.tappedDecimale()
-        model.tappedDecimale()
-        model.tappedNumber(number: "8")
-        
-        XCTAssert(model.calculText == "2.8")
-    }
-    
+    // Decimale tapped before an operator
     func testGivenNumberandDecimalTapped_WhenTapOperator_ThenAlertMessageAppears() {
         model.tappedNumber(number: "5")
         model.tappedDecimale()
@@ -80,7 +99,16 @@ class CountOnMeTests: XCTestCase {
         XCTAssert(model.expressionIsCorrect == false)
         XCTAssert(model.alertText == AlertText.AlertCases.notCorrectExpression.rawValue)
     }
-    
+    // Operator tapped twice
+    func testGivenOperatorTapped_WhenTapOperator_ThenAlertMessageAppears() {
+        model.tappedNumber(number: "5")
+        model.tappedOperator(buttonTapped: 2)
+        model.tappedOperator(buttonTapped: 2)
+        
+        XCTAssert(model.canAddOperator == false)
+        XCTAssert(model.alertText == AlertText.AlertCases.haveAlreadyOperator.rawValue)
+    }
+    // Erase
     func testGivenEntrie_WhenTapErase_ThenLastEntrieIsRemoved() {
         model.tappedNumber(number: "12")
         model.tappedDecimale()
@@ -88,6 +116,17 @@ class CountOnMeTests: XCTestCase {
         model.tappedErase()
         
         XCTAssert(model.calculText == "12.")
+    }
+    // All Clear
+    func testGivenEntrie_WhenTapAllClear_ThenRemoveAllTheEntries() {
+        model.tappedNumber(number: "10")
+        model.tappedOperator(buttonTapped: 3)
+        model.tappedNumber(number: "2")
+        model.printResult()
+        model.tappedAllClear()
+        
+        XCTAssert(model.calculText == "" && model.resultText == "")
+        
     }
     
     

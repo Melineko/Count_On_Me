@@ -144,10 +144,8 @@ final class CountOnMeModel {
         if calculText.last == " " {
             calculText.removeLast()
         }
-    let newEntrie = String(calculText.dropLast())
-    calculText = ("\(newEntrie)")
-        print ("\(newEntrie)")// to check in console
-        print ("\(calculText)")
+        let newEntrie = String(calculText.dropLast())
+        calculText = ("\(newEntrie)")
     }
     
     // All clear
@@ -201,6 +199,14 @@ final class CountOnMeModel {
         }//end of while
         
         return operationsToReduce.first
+    }
+    
+    // Display result
+    func printResult() {
+        if let resultPrint = makeCalcul() {
+            //let doubleToIntString = String(format:"%.2f", resultPrint) 2 chiffres apres virgule
+            resultText = "= \(resultPrint)"
+        }
     }
     
    
