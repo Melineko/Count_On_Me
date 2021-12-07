@@ -96,8 +96,7 @@ final class CountOnMeModel {
     // Numbers
     func tappedNumber(number: String){
         if expressionHaveResult {
-          calculText = ""
-          resultText = ""
+          tappedAllClear()
         }
         calculText.append(number)
     }
@@ -122,7 +121,7 @@ final class CountOnMeModel {
             case 4:
                 calculText.append(" / ")
             default:
-            return
+            break
             }
     }
     
@@ -163,6 +162,7 @@ final class CountOnMeModel {
     }
     
     
+    
     // MARK: - Logic
     
     
@@ -194,7 +194,8 @@ final class CountOnMeModel {
                 result = left * right
             case "/":
                 result = left / right
-            default: fatalError("Operateur inconnu !")
+            default:
+                break
             }
     
             for _ in 1...3 {

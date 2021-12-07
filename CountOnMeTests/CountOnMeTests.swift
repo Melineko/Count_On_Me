@@ -159,6 +159,45 @@ class CountOnMeTests: XCTestCase {
         
     }
     
+    func test() {
+        // error check
+        model.tappedNumber(number: "2")
+        
+        XCTAssertTrue(model.expressionIsCorrect)
+        XCTAssertTrue(model.canAddOperator)
+        
+        model.tappedOperator(buttonTapped: 3)
+        model.tappedNumber(number: "4")
+        
+        guard let result = model.makeCalcul() else { return }
+        
+        XCTAssertTrue(model.expressionHaveEnoughElement)
+        XCTAssert(result == "8")
+        
+        model.resultText = "= 8"
+        XCTAssertTrue(model.expressionHaveResult)
+        XCTAssert(model.calculText == "2 x 4")
+        
+        // tap un chifre, le texte du resultat reste vide
+        model.tappedNumber(number: "8")
+        XCTAssert(model.resultText == "")
+        
+        // tape autre chose que les 4 operateurs connus
+        model.tappedOperator(buttonTapped: 6)
+        
+        // l'espace n'est pas pris en compte
+        model.calculText = " "
+        model.tappedErase()
+        
+        // le caractère ":" n'existe pas
+        model.calculText = "2 : 7"
+        
+        guard let _ = model.makeCalcul() else { return }
+    
+    
+    
+    }
+    
     
     
     
