@@ -107,8 +107,9 @@ final class CountOnMeModel {
             if expressionHaveResult {
                 resultText = ""
                 if let displayNewResult = makeCalcul() {
-                let doubleToIntString = displayNewResult.replacingOccurrences(of: ".0", with: "")
-                calculText = "\(doubleToIntString)"
+                //let doubleToIntString = displayNewResult.replacingOccurrences(of: ".0", with: "")
+               // calculText = "\(doubleToIntString)"
+                    calculText = "\(displayNewResult)"
                 }
             }
             switch buttonTapped {
@@ -131,8 +132,9 @@ final class CountOnMeModel {
         if expressionHaveResult {
             resultText = ""
             if let displayNewResult = makeCalcul() {
-            let doubleToIntString = displayNewResult.replacingOccurrences(of: ".0", with: "")
-            calculText = "\(doubleToIntString)"
+//            let doubleToIntString = displayNewResult.replacingOccurrences(of: ".0", with: "")
+//            calculText = "\(doubleToIntString)"
+                calculText = "\(displayNewResult)"
             }
         }
         if !isDecimal{
@@ -201,7 +203,8 @@ final class CountOnMeModel {
             for _ in 1...3 {
                 operationsToReduce.remove(at: index)
             }
-            operationsToReduce.insert("\(result.stringWithoutZeroFraction)", at: index)
+            let roundedResult = round(result * 100) / 100.0
+            operationsToReduce.insert("\(roundedResult.stringWithoutZeroFraction)", at: index)
                                                 
             index = 0
             
@@ -213,10 +216,14 @@ final class CountOnMeModel {
     // Display result
     func printResult() {
         if let resultPrint = makeCalcul() {
-            //let doubleToIntString = String(format:"%.2f", resultPrint) 2 chiffres apres virgule
+            //let roundingResultString = String(format:"%.2f", resultPrint) //2 chiffres apres virgule
+            //resultText = "= \(roundingResultString)"
             resultText = "= \(resultPrint)"
         }
     }
+    
+    /*let value = 5.4873
+    let roundedValue = round(value * 100) / 100.0*/
     
    
 
