@@ -216,14 +216,9 @@ final class CountOnMeModel {
     // Display result
     func printResult() {
         if let resultPrint = makeCalcul() {
-            //let roundingResultString = String(format:"%.2f", resultPrint) //2 chiffres apres virgule
-            //resultText = "= \(roundingResultString)"
             resultText = "= \(resultPrint)"
         }
     }
-    
-    /*let value = 5.4873
-    let roundedValue = round(value * 100) / 100.0*/
     
    
 

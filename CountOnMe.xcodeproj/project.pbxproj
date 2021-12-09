@@ -13,6 +13,7 @@
 		1FA43BDA224E569A00F565CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FA43BD9224E569A00F565CB /* Assets.xcassets */; };
 		1FA43BDD224E569A00F565CB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FA43BDB224E569A00F565CB /* LaunchScreen.storyboard */; };
 		1FA43BE8224E569A00F565CB /* CountOnMeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA43BE7224E569A00F565CB /* CountOnMeTests.swift */; };
+		8E3623B0275FDD0B007E1511 /* LauncherAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3623AF275FDD0B007E1511 /* LauncherAnimationView.swift */; };
 		8E4DFF052732C796004B2A95 /* AlertText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4DFF042732C796004B2A95 /* AlertText.swift */; };
 		8EA62DAC2722B893004A5BB2 /* CountOnMeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA62DAB2722B893004A5BB2 /* CountOnMeModel.swift */; };
 		8EF4E261274E98590074EA9A /* VisualStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF4E260274E98590074EA9A /* VisualStyle.swift */; };
@@ -28,6 +29,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		8E3623B7275FE009007E1511 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		1FA43BCF224E569900F565CB /* CountOnMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CountOnMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FA43BD2224E569900F565CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +53,7 @@
 		1FA43BE3224E569A00F565CB /* CountOnMeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CountOnMeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FA43BE7224E569A00F565CB /* CountOnMeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountOnMeTests.swift; sourceTree = "<group>"; };
 		1FA43BE9224E569A00F565CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8E3623AF275FDD0B007E1511 /* LauncherAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LauncherAnimationView.swift; sourceTree = "<group>"; };
 		8E4DFF042732C796004B2A95 /* AlertText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertText.swift; sourceTree = "<group>"; };
 		8EA62DAB2722B893004A5BB2 /* CountOnMeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountOnMeModel.swift; sourceTree = "<group>"; };
 		8EF4E260274E98590074EA9A /* VisualStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualStyle.swift; sourceTree = "<group>"; };
@@ -109,6 +124,7 @@
 			children = (
 				8E4DFF042732C796004B2A95 /* AlertText.swift */,
 				8EF4E260274E98590074EA9A /* VisualStyle.swift */,
+				8E3623AF275FDD0B007E1511 /* LauncherAnimationView.swift */,
 			);
 			path = "Supporting files";
 			sourceTree = "<group>";
@@ -147,6 +163,7 @@
 				1FA43BCB224E569900F565CB /* Sources */,
 				1FA43BCC224E569900F565CB /* Frameworks */,
 				1FA43BCD224E569900F565CB /* Resources */,
+				8E3623B7275FE009007E1511 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -245,6 +262,7 @@
 				8EF4E261274E98590074EA9A /* VisualStyle.swift in Sources */,
 				8EA62DAC2722B893004A5BB2 /* CountOnMeModel.swift in Sources */,
 				1FA43BD5224E569900F565CB /* ViewController.swift in Sources */,
+				8E3623B0275FDD0B007E1511 /* LauncherAnimationView.swift in Sources */,
 				1FA43BD3224E569900F565CB /* AppDelegate.swift in Sources */,
 				8E4DFF052732C796004B2A95 /* AlertText.swift in Sources */,
 			);
