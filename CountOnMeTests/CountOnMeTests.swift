@@ -159,53 +159,65 @@ class CountOnMeTests: XCTestCase {
         
     }
     
-    func test() {
-        // error check
+    // Expression correct and add operator possible
+    func testGivenNumber_WhenNumberTaped_ThenIsCorrectAndCanAddOperator() {
         model.tappedNumber(number: "2")
         
         XCTAssertTrue(model.expressionIsCorrect)
         XCTAssertTrue(model.canAddOperator)
         
-        model.tappedOperator(buttonTapped: 3)
+    }
+    
+    // Enough elements and result appears
+    func testGivenCalcul_WhenExpressionHaveEnoughElement_ThenResultAppears() {
+        model.tappedNumber(number: "2")
+        model.tappedOperator(buttonTapped: 3) // x
         model.tappedNumber(number: "4")
         
         guard let result = model.makeCalcul() else { return }
         
         XCTAssertTrue(model.expressionHaveEnoughElement)
         XCTAssert(result == "8")
-        
+    }
+    
+    // CalculText print the operation of the result
+    func testGivenResultText_WhenHaveResult_ThenCalculTextIsTheCalcul() {
+        model.tappedNumber(number: "2")
+        model.tappedOperator(buttonTapped: 3) // x
+        model.tappedNumber(number: "4")
         model.resultText = "= 8"
         XCTAssertTrue(model.expressionHaveResult)
         XCTAssert(model.calculText == "2 x 4")
-        
-        // tap un chifre, le texte du resultat reste vide
+    }
+
+    // ResultText stay empty
+    func testGivenResultText_WhenTappedNumber_ThenResultTextStayEmpty() {
         model.tappedNumber(number: "8")
         XCTAssert(model.resultText == "")
-        
-        // tape autre chose que les 4 operateurs connus
+    }
+
+    // Impossible to tap an unknown operator
+    func testGivenOperation_WhenTappedOtherOperator_ThenUnknownOperatorIsImpossible() {
         model.tappedOperator(buttonTapped: 6)
-        
-        // l'espace n'est pas pris en compte
-        model.calculText = " "
-        model.tappedErase()
-        
-        // le caractère ":" n'existe pas
-        model.calculText = "2 : 7"
-        
-        guard let _ = model.makeCalcul() else { return }
-    
-    
-    
     }
     
+    // Only space in calculText is impossible
+    func testGivenCalculText_WhenSpace_ThenSpaceIsImpossible() {
+        model.calculText = " "
+        model.tappedErase()
+    }
     
+    // Two points for division is impossible
+    func testGivenCalculText_WhenCharacterTwoPoints_ThenTwoPointsDoesntExist() {
+        model.calculText = "2 : 7"
+    }
     
+    // MakeCalcul is not nil
+    func testMakelCalcul_WhenGuardLetCheck_ThenMakeCalculExist() {
+        guard let _ = model.makeCalcul() else { return }
+    }
     
-    
-    
-    
-    
-    // calcul fonction
+    // Calcul fonction
     func makeCalculWith(number1: String, operatorUsed: Int, number2: String, resultExpected: String) {
         model.tappedNumber(number: number1)
         model.tappedOperator(buttonTapped: operatorUsed)// tag 4 for "/"

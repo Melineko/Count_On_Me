@@ -75,7 +75,6 @@ class ViewController: UIViewController {
             launcherAnimationView.logoGifImageView.startAnimatingGif()
         }*/
     
-    
     // MARK: - actions
     
     // Add numbers
@@ -86,7 +85,6 @@ class ViewController: UIViewController {
         model.tappedNumber(number: numberText)
         operationViewLink()
         resultViewLink()
-        
     }
     
     // Add operaor
@@ -108,10 +106,8 @@ class ViewController: UIViewController {
         operationViewLink()
     }
     
-    
     // Erase last entrie
     @IBAction func erasedButton(_ sender: UIButton) {
-    
         if !model.expressionHaveResult {
             model.tappedErase()
             operationViewLink()
@@ -121,7 +117,6 @@ class ViewController: UIViewController {
             alert(message: model.alertText)
             return
         }
-        
     }
     
     // Clear All
@@ -129,12 +124,9 @@ class ViewController: UIViewController {
         model.tappedAllClear()
         operationViewLink()
         resultViewLink()
-        
     }
-    
 
     @IBAction func tappedEqualButton(_ sender: UIButton) {
-        
         if model.expressionHaveResult {
             model.alertText = AlertText.AlertCases.haveEnoughtElements.rawValue
             alert(message: model.alertText)
@@ -145,7 +137,6 @@ class ViewController: UIViewController {
         } else {
             alert(message:model.alertText)
         }
-        
     }
     
     func alert(message: String) {
