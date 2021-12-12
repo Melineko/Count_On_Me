@@ -8,12 +8,6 @@
 
 import UIKit
 
-// delegate for launcher animation *******
-/*extension ViewController: SwiftyGifDelegate {
-    func gifDidStop(sender: UIImageView) {
-        launcherAnimationView.isHidden = true
-    }
-}*/
 
 class ViewController: UIViewController {
     
@@ -34,9 +28,6 @@ class ViewController: UIViewController {
     // Import the style
     let styleButton = VisualStyle()
     
-    // Import the launcher animation view *******
-    //let launcherAnimationView = LauncherAnimationView()
-    
     // view operation and result
     func operationViewLink() {
         textView.text = model.calculText
@@ -52,11 +43,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // animation launcher *******
-        /*view.addSubview(launcherAnimationView)
-        launcherAnimationView.pinEdgesToSuperView()
-        launcherAnimationView.logoGifImageView.delegate = self*/
-        
         // set style
         styleButton.buttonStyleSetting(arrayNumbers: numberButtons, arrayOperator: operatorButtons, erase: eraseButton, ac: ACButton, decimal: pointDecimalButton, equal: equalButton)
         let bgStyle = VisualStyle()
@@ -68,12 +54,6 @@ class ViewController: UIViewController {
         
         // Do any additional setup after loading the view.
     }
-    
-    // launcher animation *******
-    /*override func viewDidAppear(_ animated: Bool) {
-            super.viewDidAppear(animated)
-            launcherAnimationView.logoGifImageView.startAnimatingGif()
-        }*/
     
     // MARK: - actions
     
