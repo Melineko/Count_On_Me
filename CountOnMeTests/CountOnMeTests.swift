@@ -142,6 +142,15 @@ class CountOnMeTests: XCTestCase {
         
         XCTAssert(model.calculText == "" && model.resultText == "")
     }
+    
+    // All Clear when expression have result
+    func testGivenResult_WhenTapNumber_ThenAllClear() {
+        model.resultText = "= 6"
+        model.tappedNumber(number: "10")
+        
+        XCTAssert(model.calculText == "10" && model.resultText == "")
+    }
+    
     // Continue with result
     func testGivenResult_WhenTappedOperator_ThenResultGoToCalculView() {
         model.tappedNumber(number: "5")
