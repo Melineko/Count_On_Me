@@ -56,6 +56,12 @@ class CountOnMeTests: XCTestCase {
         XCTAssert(model.resultText == "= 30")
         XCTAssert(model.expressionHaveResult == true)
     }
+    // Number
+    func testGivenCalculText_WhenTapNumber_ThenNumberAppear() {
+        model.tappedNumber(number: "1")
+
+        XCTAssert(model.calculText == "1")
+    }
     // Decimale
     func testGivenNumberWasTapped_WhenTapDecimaleAndNumber_ThenDecimalNumberAppear() {
         model.tappedNumber(number: "2")
