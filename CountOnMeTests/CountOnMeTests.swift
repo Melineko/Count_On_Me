@@ -96,7 +96,7 @@ class CountOnMeTests: XCTestCase {
     func testGivenNumberandDecimalTapped_WhenTapOperator_ThenAlertMessageAppears() {
         model.tappedNumber(number: "5")
         model.tappedDecimale()
-        model.tappedOperator(buttonTapped: 2)// tag 2 for "+"
+        model.tappedOperator(buttonTapped: 2)// "+"
         
         XCTAssert(model.expressionIsCorrect == false)
         XCTAssert(model.alertText == AlertText.AlertCases.notCorrectExpression.rawValue)
@@ -104,8 +104,8 @@ class CountOnMeTests: XCTestCase {
     // Operator tapped twice
     func testGivenOperatorTapped_WhenTapOperator_ThenAlertMessageAppears() {
         model.tappedNumber(number: "5")
-        model.tappedOperator(buttonTapped: 2)// tag 2 for "+"
-        model.tappedOperator(buttonTapped: 2)// tag 2 for "+"
+        model.tappedOperator(buttonTapped: 2)// "+"
+        model.tappedOperator(buttonTapped: 2)// "+"
         
         XCTAssert(model.canAddOperator == false)
         XCTAssert(model.alertText == AlertText.AlertCases.haveAlreadyOperator.rawValue)
@@ -129,7 +129,7 @@ class CountOnMeTests: XCTestCase {
     // All Clear
     func testGivenEntrie_WhenTapAllClear_ThenRemoveAllTheEntries() {
         model.tappedNumber(number: "10")
-        model.tappedOperator(buttonTapped: 3)// tag 3 for "x"
+        model.tappedOperator(buttonTapped: 3)// "x"
         model.tappedNumber(number: "2")
         model.printResult()
         model.tappedAllClear()
@@ -139,10 +139,10 @@ class CountOnMeTests: XCTestCase {
     // Continue with result
     func testGivenResult_WhenTappedOperator_ThenResultGoToCalculView() {
         model.tappedNumber(number: "5")
-        model.tappedOperator(buttonTapped: 2)// tag 2 for "+"
+        model.tappedOperator(buttonTapped: 2)// "+"
         model.tappedNumber(number: "3")
         model.printResult()
-        model.tappedOperator(buttonTapped: 4)// tag 4 for "/"
+        model.tappedOperator(buttonTapped: 4)//  "/"
         
         XCTAssert(model.calculText == "8 / ")
         
@@ -150,7 +150,7 @@ class CountOnMeTests: XCTestCase {
     // Continue with result to make it decimal
     func testGivenResult_WhenTappedDecimal_ThenResultGoToCalculView() {
         model.tappedNumber(number: "5")
-        model.tappedOperator(buttonTapped: 2)// tag 2 for "+"
+        model.tappedOperator(buttonTapped: 2)// "+"
         model.tappedNumber(number: "3")
         model.printResult()
         model.tappedDecimale()
@@ -189,6 +189,15 @@ class CountOnMeTests: XCTestCase {
         XCTAssertTrue(model.expressionHaveResult)
         XCTAssert(model.calculText == "2 x 4")
     }
+    
+    // Print the result in resultText
+    func testOperation_WhenResult_ThenPrintResultText() {
+        model.tappedNumber(number: "2")
+        model.tappedOperator(buttonTapped: 3) // x
+        model.tappedNumber(number: "4")
+        model.printResult()
+        XCTAssert(model.resultText == "= 8")
+    }
 
     // ResultText stay empty
     func testGivenResultText_WhenTappedNumber_ThenResultTextStayEmpty() {
@@ -199,17 +208,21 @@ class CountOnMeTests: XCTestCase {
     // Impossible to tap an unknown operator
     func testGivenOperation_WhenTappedOtherOperator_ThenUnknownOperatorIsImpossible() {
         model.tappedOperator(buttonTapped: 6)
+        XCTAssert(model.calculText != "+" && model.calculText != "-" && model.calculText != "x" && model.calculText != "/")
     }
     
     // Only space in calculText is impossible
     func testGivenCalculText_WhenSpace_ThenSpaceIsImpossible() {
         model.calculText = " "
+        XCTAssert(model.calculText == " ")
         model.tappedErase()
     }
     
     // Two points for division is impossible
     func testGivenCalculText_WhenCharacterTwoPoints_ThenTwoPointsDoesntExist() {
         model.calculText = "2 : 7"
+        guard let _ = model.makeCalcul() else { return }
+        
     }
     
     // MakeCalcul is not nil
@@ -220,7 +233,7 @@ class CountOnMeTests: XCTestCase {
     // Calcul fonction
     func makeCalculWith(number1: String, operatorUsed: Int, number2: String, resultExpected: String) {
         model.tappedNumber(number: number1)
-        model.tappedOperator(buttonTapped: operatorUsed)// tag 4 for "/"
+        model.tappedOperator(buttonTapped: operatorUsed)
         model.tappedNumber(number: number2)
         if let unwrapResult = model.makeCalcul(){
             result = unwrapResult
