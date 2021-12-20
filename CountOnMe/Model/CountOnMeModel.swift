@@ -108,13 +108,18 @@ final class CountOnMeModel {
             }
         }
         switch buttonTapped {
+        
         case 1:
+            removeLastSpace()
             calculText.append(" - ")
         case 2:
+            removeLastSpace()
             calculText.append(" + ")
         case 3:
+            removeLastSpace()
             calculText.append(" x ")
         case 4:
+            removeLastSpace()
             calculText.append(" / ")
         default:
             break
@@ -143,13 +148,17 @@ final class CountOnMeModel {
     
     // Erase
     func tappedErase() {
-        if calculText.last == " " {
-            calculText.removeLast()
-        }
+        removeLastSpace()
         let newEntrie = String(calculText.dropLast())
         calculText = ("\(newEntrie)")
     }
     
+    // Remove last space
+    func removeLastSpace() {
+        if calculText.last == " " {
+            calculText.removeLast()
+        }
+    }
     // All clear
     func tappedAllClear() {
         calculText = ""
