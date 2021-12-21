@@ -17,11 +17,10 @@ extension Double {
 final class CountOnMeModel {
     
     let result: Double = 0
-    var alertText = "Non valide"
-    var left = ""
-    var right = ""
     var calculText: String = ""
     var resultText: String = ""
+    var alertText = "Non valide"
+    
     
     // Transforms calculText into an array of Strings
     var elements: [String] {
@@ -88,11 +87,18 @@ final class CountOnMeModel {
         return false
     }
     
+    var isDivisionByZero: Bool {
+        if !calculText.contains("/ 0") {
+            return false
+        }
+        return true
+    }
+    
     // MARK: - Buttons fonctionnalities
     
     // Numbers
     func tappedNumber(number: String) {
-        if expressionHaveResult {
+        if expressionHaveResult || resultText == "ERREUR" {
             tappedAllClear()
         }
         calculText.append(number)
@@ -106,7 +112,7 @@ final class CountOnMeModel {
             if let displayNewResult = makeCalcul() {
                 calculText = "\(displayNewResult)"
             }
-        }
+        } 
         switch buttonTapped {
         
         case 1:
@@ -129,7 +135,9 @@ final class CountOnMeModel {
     // Decimale
     func tappedDecimale() {
         // Take result to complete with decimal
-        if expressionHaveResult {
+        if resultText == "ERREUR" {
+            tappedAllClear()
+        } else if expressionHaveResult {
             resultText = ""
             if let displayNewResult = makeCalcul() {
                 calculText = "\(displayNewResult)"
@@ -153,7 +161,7 @@ final class CountOnMeModel {
         calculText = ("\(newEntrie)")
     }
     
-    // Remove last space
+    // If there is a space remove last space
     func removeLastSpace() {
         if calculText.last == " " {
             calculText.removeLast()
@@ -221,7 +229,11 @@ final class CountOnMeModel {
     // Display result
     func printResult() {
         guard let resultPrint = makeCalcul() else { return }
+        if !isDivisionByZero {
         resultText = "= \(resultPrint)"
+        } else {
+        resultText = "ERREUR"
+        }
     }
 
 }

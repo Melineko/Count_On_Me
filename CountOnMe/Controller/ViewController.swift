@@ -71,7 +71,7 @@ class ViewController: UIViewController {
     @IBAction func tappedButton(_ sender: UIButton) {
         let buttonTapped = sender.tag
         
-        if model.canAddOperator && model.expressionIsCorrect {
+        if model.canAddOperator && model.expressionIsCorrect && model.resultText != "ERREUR" {
             model.tappedOperator(buttonTapped: buttonTapped)
             operationViewLink()
             resultViewLink()
@@ -84,11 +84,12 @@ class ViewController: UIViewController {
     @IBAction func decimalButton(_ sender: UIButton) {
         model.tappedDecimale()
         operationViewLink()
+        resultViewLink()
     }
     
     // Erase last entrie
     @IBAction func erasedButton(_ sender: UIButton) {
-        if !model.expressionHaveResult {
+        if !model.expressionHaveResult && model.resultText != "ERREUR" {
             model.tappedErase()
             operationViewLink()
             resultViewLink()
@@ -107,7 +108,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func tappedEqualButton(_ sender: UIButton) {
-        if model.expressionHaveResult {
+        if model.expressionHaveResult || model.resultText == "ERREUR" {
             model.alertText = AlertText.AlertCases.haveEnoughtElements.rawValue
             alert(message: model.alertText)
         } else if model.expressionIsCorrect && model.expressionHaveEnoughElement {

@@ -12,8 +12,7 @@ import UIKit
 struct VisualStyle {
     
     func buttonStyle(button: UIButton, redCS: CGFloat, greenCS: CGFloat, blueCS: CGFloat){
-//button.setImage(UIImage(named: "Globe"), forState: .normal)
-//button.backgroundColor = UIColor(red: 171/255, green: 178/255, blue: 186/255, alpha: 1.0)
+
 // Shadow and Radius
         button.layer.shadowColor = UIColor(red: redCS, green: greenCS, blue: blueCS, alpha: 1.0).cgColor
         button.layer.shadowOffset = CGSize(width: 1.0, height: 2.0)
@@ -44,8 +43,6 @@ struct VisualStyle {
             let gradientLayer = CAGradientLayer()
             gradientLayer.colors = [colorTop, colorBottom]
             gradientLayer.locations = [0.0, 1.0]
-        //gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-        //gradientLayer.endPoint = CGPoint(x: 1, y: 1)
             gradientLayer.frame = ofView.bounds
                     
             ofView.layer.insertSublayer(gradientLayer, at:0)
