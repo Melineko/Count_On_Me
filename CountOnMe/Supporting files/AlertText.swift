@@ -14,6 +14,5 @@ enum AlertCases: String {
     case notCorrectExpression = "Entrez une expression correcte !"
     case haveEnoughtElements = "Démarrez un nouveau calcul !"
     case haveAlreadyOperator = "Un opérateur est déjà mis !"
-    case divisionForZero = "Erreur"
 }
 }
